@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Hero Concept</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">XuanThanhSigma</div>
+  <nav>
+    <a href="#" data-i18n="nav_about">About</a>
+    <a href="#" data-i18n="nav_projects">Projects</a>
+    <a href="#" data-i18n="nav_contact">Contact</a>
+    <button id="langBtn">EN</button>
+  </nav>
+ 
+</header>
+
+<main class="hero">
+  <div class="hero-content">
+     <h1>
+  <span data-i18n="hero_hi">Hi, I'm</span>
+  <span class="highlight" data-i18n="hero_name">Nguyen Xuan Thanh</span>
+  <span data-i18n="hero_or">or</span>
+  <span class="highlight" data-i18n="hero_alias">LoveStalin</span><br/>
+  <span data-i18n="hero_line1">I build this website</span><br/>
+  <span data-i18n="hero_line2">to showcase my portfolio</span>
+</h1>
+
+
+    <p data-i18n="hero_desc">
+      10th grader • Frontend developer • Basketball Player • Politics Lover
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn primary" data-i18n="btn_achievement">
+        View My Achievement
+      </button>
+      <button class="btn secondary" data-i18n="btn_abilities">
+        My Abilities
+      </button>
+    </div>
+  </div>
+
+  <div class="ambient-glow"></div>
+
+  <div class="hero-media">
+    <a href="#" class="more-btn" data-i18n="btn_more">More →</a>
+
+    <div class="image-card">
+      <img src="image/Basketball.jpg" alt="Basketball Achievement">
+    </div>
+  </div>
+
+  <div class="ambient-glow"></div>
+
+  <!-- OVERLAY -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- MODAL - ACHIEVEMENT -->
+  <div class="modal" id="achievementModal">
+    <div class="modal-header">
+      <h3 data-i18n="modal_achievement_title">View my achievement</h3>
+      <button class="close-btn" id="closeModal">×</button>
+    </div>
+
+    <div class="modal-content" data-i18n="modal_waiting_achievement">
+      Waiting for Update
+    </div>
+  </div>
+
+  <!-- MODAL - ABILITIES -->
+  <div class="modal" id="abilitiesModal">
+    <div class="modal-header">
+      <h3 data-i18n="modal_abilities_title">My Abilities</h3>
+      <button class="close-btn abilities-close">×</button>
+    </div>
+
+    <div class="modal-content" data-i18n="modal_abilities_desc">
+      I'm not done yet :)
+    </div>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
