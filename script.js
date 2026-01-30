@@ -107,6 +107,8 @@ function setLanguage(lang) {
     const key = el.dataset.i18n;
     el.textContent = translations[lang][key] || "";
   });
+  // lưu vào localStorage
+  localStorage.setItem("lang", lang);
 }
 
 langBtn.addEventListener("click", () => {
@@ -116,3 +118,9 @@ langBtn.addEventListener("click", () => {
 });
 
 setLanguage(currentLang);
+
+  function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.style.display =
+      menu.style.display === "block" ? "none" : "block";
+  }

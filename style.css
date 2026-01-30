@@ -236,3 +236,137 @@ html, body {
   font-size: 15px;
   color: #b5b5b5;
 }
+.nav {
+  display:inline-block
+}
+
+@media (max-width: 768px) {
+  /* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 28px;
+  position: relative;
+  z-index: 1000;
+}
+#menu {
+  display: none;
+  margin-top:8px;
+  list-style: none;
+  padding: 0;
+}
+
+.menu-btn {
+  font-size: 28px;
+  cursor: pointer;
+}
+#menu li {
+  margin: 6px 0;
+}
+
+/* dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  background: #0b0f14;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 10px 0;
+  min-width: 160px;
+
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 18px;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+/* active */
+.dropdown-menu.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+  nav {
+    display: none; /* sau này làm hamburger */
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #0b0f14;
+    padding: 14px 18px;
+    border-radius: 12px;
+  }
+  nav.active {
+    display: flex;
+  }
+.ambient-glow,
+.overlay {
+  pointer-events: none;
+}
+  .logo {
+    font-size: 18px;
+  }
+
+  /* HERO */
+  .hero {
+    flex-direction: column;
+    padding: 80px 20px 40px;
+    gap: 32px;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+    line-height: 1.1;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  /* IMAGE */
+  .hero-media {
+    width: 100%;
+  }
+
+  .image-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .more-btn {
+    top: -12px;
+    right: 0;
+    font-size: 14px;
+  }
+}

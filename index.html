@@ -11,17 +11,21 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
 <header class="navbar">
   <div class="logo">XuanThanhSigma</div>
-  <nav>
-    <a href="#" data-i18n="nav_about">About</a>
-    <a href="#" data-i18n="nav_projects">Projects</a>
-    <a href="#" data-i18n="nav_contact">Contact</a>
-    <button id="langBtn">EN</button>
-  </nav>
- 
+  <div class="nav">
+<div class="menu-btn" onclick="toggleMenu()">
+  ☰
+</div>
+<ul id="menu">
+  <li><a href="#about">About</a></li>
+  <li><a href="#projects">Projects</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
+     <button id="langBtn">EN</button>
+  </div>
 </header>
+
 
 <main class="hero">
   <div class="hero-content">
