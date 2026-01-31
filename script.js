@@ -1,24 +1,4 @@
-const imageCard = document.querySelector(".image-card");
 
-imageCard.addEventListener("mousemove", (e) => {
-  const rect = imageCard.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  const rotateX = -(y / rect.height - 0.5) * 8;
-  const rotateY = (x / rect.width - 0.5) * 8;
-
-  imageCard.style.transform = `
-    perspective(800px)
-    rotateX(${rotateX}deg)
-    rotateY(${rotateY}deg)
-    scale(1.03)
-  `;
-});
-
-imageCard.addEventListener("mouseleave", () => {
-  imageCard.style.transform = "perspective(800px) rotateX(0) rotateY(0) scale(1)";
-});
 const openBtn = document.querySelector(".btn.primary"); // View My Achievement
 const overlay = document.getElementById("overlay");
 const modal = document.getElementById("achievementModal");

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About | XuanThanhSigma</title>
+  <link rel="stylesheet" href="about.css" />
+</head>
+<header class="navbar">
+  <div class="logo">XuanThanhSigma</div>
+  <div class="nav">
+<div class="menu-btn" onclick="toggleMenu()">
+  ☰
+</div>
+<ul id="menu">
+  <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+  <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+  <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+</ul>
+     <button id="langBtn">EN</button>
+  </div>
+</header>
+<body>
+
+  <section class="timeline-wrapper">
+
+   <!-- Ảnh bên trái -->
+<div class="side-image left">
+  <img id="leftImg" src="left-image.jpg" />
+</div>
+
+<!-- Nội dung trung tâm -->
+<div class="timeline-center" id="timelineBox">
+  <div class="timeline-header">
+    <h2 id="timelineTitle">2010 — Spawned</h2>
+  </div>
+
+  <div class="timeline-content">
+    <p id="timelineText">
+      I was born in Vietnam.
+    </p>
+  </div>
+</div>
+
+<!-- Ảnh bên phải -->
+<div class="side-image right">
+  <img id="rightImg" src="right-image.jpg" />
+</div>
+
+<!-- Dots -->
+<div class="timeline-controls">
+  <span class="dot active" data-index="0"></span>
+  <span class="dot" data-index="1"></span>
+</div>
+
+<script src="about.js"></script>
+
+
+  </section>
+
+</body>
+</html>
