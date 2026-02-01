@@ -9,75 +9,6 @@ body {
   color: #eaeaea;
   font-family: system-ui, sans-serif;
 }
-
-.timeline-wrapper {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  gap: 60px;
-}
-
-/* Ảnh 2 bên */
-.side-image {
-  width: 260px;
-  height: 320px;
-  border: 2px solid #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.side-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Khung trung tâm */
-.timeline-center {
-  width: 520px;
-  border: 2px solid #fff;
-}
-
-/* Header */
-.timeline-header {
-  border-bottom: 2px solid #fff;
-  padding: 16px;
-}
-
-.timeline-header h2 {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-/* Content */
-.timeline-content {
-  padding: 24px;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-/* Nút tròn timeline */
-.timeline-controls {
-  position: absolute;
-  bottom: 80px;
-  display: flex;
-  gap: 40px;
-}
-
-.dot {
-  width: 22px;
-  height: 22px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.dot.active {
-  background: #fff;
-}
 /* ===== NAVBAR ===== */
 .navbar {
   position: fixed;
@@ -223,4 +154,145 @@ body {
     transform: translateX(0);
     opacity: 1;
   }
+}
+/* TIMELINE WRAPPER */
+.timeline {
+  width: 100%;
+  min-height: 100vh;
+  padding: 80px 60px;
+}
+
+/* ===== TIMELINE YEARS (TRÊN) ===== */
+.timeline-years {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 100px;
+  padding: 0 200px;
+}
+
+.timeline-years span {
+  font-size: 14px;
+  color: #888;
+  cursor: pointer;
+  position: relative;
+}
+
+/* DOT TRÊN TIMELINE */
+.timeline-years span::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #3aff75;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* ===== CONTENT ===== */
+.timeline-container {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+}
+
+/* TIMELINE ITEM (MỖI MỐC) */
+.timeline-item {
+  display: none;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  align-items: center;
+  height: 100%;
+  gap: 40px;
+}
+
+/* MỐC ĐANG ACTIVE */
+.timeline-item.active {
+  display: grid;
+}
+
+/* ===== SIDE IMAGE ===== */
+.side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.side img {
+  width: 260px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 14px;
+  opacity: 0.9;
+  filter: grayscale(20%);
+}
+
+/* ===== CENTER CONTENT ===== */
+.center {
+  text-align: center;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(58, 255, 117, 0.2);
+}
+
+.center h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #3aff75;
+}
+
+.center p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #cfd6d1;
+}
+.timeline-years span.active {
+  color: #3aff75;
+}
+
+.timeline-years span.active::after {
+  opacity: 1;
+  box-shadow: 0 0 10px #3aff75;
+}
+.timeline-nav {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.timeline-nav button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(58, 255, 117, 0.4);
+  background: transparent;
+  color: #3aff75;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.timeline-controls {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+  pointer-events:auto;
+}
+
+.timeline-controls button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(58,255,117,.4);
+  background: transparent;
+  color: #3aff75;
+  font-size: 22px;
+  cursor: pointer;
 }
