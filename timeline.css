@@ -1,0 +1,298 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0b0f12;
+  color: #eaeaea;
+  font-family: system-ui, sans-serif;
+}
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 24px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 20px;
+  color: #5cff9a;
+}
+
+.navbar nav a {
+  margin-left: 32px;
+  text-decoration: none;
+  color: #b5b5b5;
+  font-size: 14px;
+}
+
+.navbar nav a:hover {
+  color: #ffffff;
+}
+@media (max-width: 768px) {
+  /* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 28px;
+  position: relative;
+  z-index: 1000;
+}
+#menu {
+  display: none;
+  margin-top:8px;
+  list-style: none;
+  padding: 0;
+}
+
+.menu-btn {
+  font-size: 28px;
+  cursor: pointer;
+}
+#menu li {
+  margin: 6px 0;
+}
+#menu a:hover {
+  color: #ffffff;         /* hover sáng hơn tí */
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,0.4);
+}
+
+/* dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  background: #0b0f14;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 10px 0;
+  min-width: 160px;
+
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 18px;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+/* active */
+.dropdown-menu.active {
+  display:block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
+  nav {
+    display: none; /* sau này làm hamburger */
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #0b0f14;
+    padding: 14px 18px;
+    border-radius: 12px;
+  }
+  nav.active {
+    display: flex;
+  }
+.ambient-glow,
+.overlay {
+  pointer-events: none;
+}
+  .logo {
+    font-size: 18px;
+  }
+}
+/* animation base */
+.slide-left {
+  animation: slideLeft 0.4s ease;
+}
+
+.slide-right {
+  animation: slideRight 0.4s ease;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* TIMELINE WRAPPER */
+.timeline {
+  width: 100%;
+  min-height: 100vh;
+  padding: 80px 60px;
+}
+
+/* ===== TIMELINE YEARS (TRÊN) ===== */
+.timeline-years {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 100px;
+  padding: 0 200px;
+}
+
+.timeline-years span {
+  font-size: 14px;
+  color: #888;
+  cursor: pointer;
+  position: relative;
+}
+
+/* DOT TRÊN TIMELINE */
+.timeline-years span::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 28px;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #3aff75;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* ===== CONTENT ===== */
+.timeline-container {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+}
+
+/* TIMELINE ITEM (MỖI MỐC) */
+.timeline-item {
+  display: none;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  align-items: center;
+  height: 100%;
+  gap: 40px;
+}
+
+/* MỐC ĐANG ACTIVE */
+.timeline-item.active {
+  display: grid;
+}
+
+/* ===== SIDE IMAGE ===== */
+.side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.side img {
+  width: 260px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 14px;
+  opacity: 0.9;
+  filter: grayscale(20%);
+}
+
+/* ===== CENTER CONTENT ===== */
+.center {
+  text-align: center;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(58, 255, 117, 0.2);
+}
+
+.center h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #3aff75;
+}
+
+.center p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #cfd6d1;
+}
+.timeline-years span.active {
+  color: #3aff75;
+}
+
+.timeline-years span.active::after {
+  opacity: 1;
+  box-shadow: 0 0 10px #3aff75;
+}
+.timeline-nav {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.timeline-nav button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(58, 255, 117, 0.4);
+  background: transparent;
+  color: #3aff75;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.timeline-controls {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+  pointer-events:auto;
+}
+
+.timeline-controls button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(58,255,117,.4);
+  background: transparent;
+  color: #3aff75;
+  font-size: 22px;
+  cursor: pointer;
+}
