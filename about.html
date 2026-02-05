@@ -53,10 +53,28 @@
       <li class="typing" data-i18n="about_journey_3">
         <span class="text-green">Current:</span> Continuing to improve my skills in web development
       </li>
-      <li class="typing" >
-        <a href="timeline.html" data-i18n="about_timeline">You want to see my deeper information?Check more 😉</a></li> 
-      </li>
+     <a href="timeline.html"
+   id="privateTimelineLink"
+    class="typing"
+  data-i18n="about_timeline">
+  You want to see my deeper information?Check more 😉
+</a>
   </div>
+<div class="lock-overlay" id="lockOverlay">
+  <div class="lock-box">
+    <h2>Private Timeline 🔒</h2>
+    <p>This section is protected</p>
+
+    <input
+      type="password"
+      id="passwordInput"
+      placeholder="Enter password"
+    />
+
+    <button id="unlockBtn">Unlock</button>
+    <p class="error" id="lockError"></p>
+  </div>
+</div>
 
   <script src="about.js"></script>
 </section>

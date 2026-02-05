@@ -1,40 +1,43 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const typingElements = document.querySelectorAll(".typing");
-  const typingSpeed = 25; // ms / ký tự
-  const delayBetween = 400; // delay giữa các đoạn
+ let typingElements = [];
+let typingIndex = 0;
+const typingSpeed = 20;
+const delayBetween = 700;
+
+function startTyping() {
+  typingElements = document.querySelectorAll(".typing");
+  typingIndex = 0;
 
   typingElements.forEach(el => {
-    el.dataset.text = el.innerHTML; // lưu text gốc (có span)
-    el.innerHTML = ""; // xoá để bắt đầu gõ
+    el.dataset.text = el.innerHTML;
+    el.innerHTML = "";
   });
 
-  let index = 0;
-
-  function typeNext() {
-    if (index >= typingElements.length) return;
-
-    const el = typingElements[index];
-    const text = el.dataset.text;
-    let charIndex = 0;
-
-    const typingInterval = setInterval(() => {
-      el.innerHTML = text.slice(0, charIndex + 1);
-      charIndex++;
-
-      if (charIndex === text.length) {
-        clearInterval(typingInterval);
-        index++;
-        setTimeout(typeNext, delayBetween);
-      }
-    }, typingSpeed);
-  }
-
   typeNext();
-});
+}
+
+function typeNext() {
+  if (typingIndex >= typingElements.length) return;
+
+  const el = typingElements[typingIndex];
+  const text = el.dataset.text;
+  let charIndex = 0;
+
+  const interval = setInterval(() => {
+    el.innerHTML = text.slice(0, charIndex + 1);
+    charIndex++;
+
+    if (charIndex === text.length) {
+      clearInterval(interval);
+      typingIndex++;
+      setTimeout(typeNext, delayBetween);
+    }
+  }, typingSpeed);
+}
+
 // Language Translations
 const translations = {
   en: {
-    nav_about: "About",
+    nav_home: "Home",
     nav_projects: "Projects",
     nav_contact: "Contact",
     about_title: "About Me",
@@ -50,13 +53,13 @@ const translations = {
   },
 
   vi: {
-    nav_about: "Giới thiệu",
-    nav_projects: "Dự án",
+    nav_home: "Trang chủ",
+    nav_projects: "Các Dự án",
     nav_contact: "Liên hệ",
     about_title: "Thông tin chung về mình",
     about_name :"Tên đầy đủ của mình là <span class=\"text-green\">Nguyễn Xuân Thành</span> – nhưng bạn có thể gọi mình là <span class=\"text-green\">XuanThanhSigma</span>.",
     about_hobbies :" Mình thích những thứ về <span class=\"text-green\">Quân sự, Chính trị , </span> <span class=\"text-blue\">Hàng không và </span> <span class=\"text-orange\">Bóng rổ</span>. Mình cũng đam mê về <span class=\"text-grey\">phát triển web và công nghệ.</span>",
-    about_dreams :" Hiện nay, mình muốn trở thành <span class=\"text-green\">Người lính</span> hoặc <span class=\"text-blue\">Phi công.</span>",
+    about_dreams :" Hiện nay, mình muốn trở thành <span class=\"text-green\">Bộ đội</span> hoặc <span class=\"text-blue\">Phi công.</span>",
     about_future :"Bạn biết đấy, mình vẫn còn là học sinh. Vì vậy mình chưa thể quyết định tương lai của mình. Nhưng một điều chắc chắn là mình sẽ cố gắng hết sức để đạt được ước mơ của mình.",
     about_webdev :"Dưới đây là một chút về những gì mình đã làm trong lĩnh vực phát triển web cho đến nay:",
     about_journey_1 :"<span class=\"text-green\">Tháng 7 năm 2025</span> Bắt đầu học Front-end (HTML, CSS, JS)",
@@ -67,19 +70,69 @@ const translations = {
 };
 let currentLang = "en";
 
-function setLanguage(lang) {
+function setLanguage(lang, withTyping = false) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.dataset.i18n;
     el.innerHTML = translations[lang][key] || "";
   });
-  // lưu vào localStorage
+
   localStorage.setItem("lang", lang);
+
+  if (withTyping) {
+    startTyping(); // 🔥 CHỈ chạy khi đổi ngôn ngữ
+  }
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const savedLang = localStorage.getItem("lang") || "en";
+  currentLang = savedLang;
+  langBtn.innerText = currentLang.toUpperCase();
+
+  setLanguage(currentLang, true); // typing
+});
+
 
 langBtn.addEventListener("click", () => {
   currentLang = currentLang === "en" ? "vi" : "en";
   langBtn.innerText = currentLang.toUpperCase();
-  setLanguage(currentLang);
+  setLanguage(currentLang, true); // ✅ typing chạy lại
+});
+//hamburger menu
+function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.style.display =
+      menu.style.display === "block" ? "none" : "block";
+  }
+// Lock timeline
+const PASSWORD = "1112026-SL-TW"; // can change
+
+const link = document.getElementById("privateTimelineLink");
+const overlay = document.getElementById("lockOverlay");
+const unlockBtn = document.getElementById("unlockBtn");
+const input = document.getElementById("passwordInput");
+const error = document.getElementById("lockError");
+
+link.addEventListener("click", (e) => {
+  e.preventDefault(); // chặn vào link
+  overlay.style.display = "flex";
+  input.focus();
 });
 
- setLanguage(currentLang);
+unlockBtn.addEventListener("click", unlock);
+
+input.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") unlock();
+});
+
+function unlock() {
+  if (input.value === PASSWORD) {
+    window.location.href = "timeline.html"; // ✅ vào link
+  } else {
+    error.innerText = "Wrong password";
+    input.value = "";
+  }
+}
+console.log("LOCK SCRIPT LOADED");
+link.addEventListener("click", (e) => {
+  e.preventDefault();
+  alert("This section is encrypted. Please enter the password to access.");
+});

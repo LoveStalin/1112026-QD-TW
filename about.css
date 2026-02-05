@@ -120,3 +120,46 @@ html, body {
   border-radius: 6px;
   font-weight: 600;
 }
+/* ===== Lock Section ===== */
+.lock-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 15, 20, 0.85);
+  backdrop-filter: blur(10px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.lock-box {
+  background: #0b0f14;
+  border: 1px solid #22c55e;
+  padding: 32px;
+  border-radius: 12px;
+  text-align: center;
+  width: 320px;
+}
+
+.lock-box input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 16px;
+  background: #000;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.lock-box button {
+  margin-top: 16px;
+  padding: 10px 20px;
+  background: #22c55e;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.error {
+  color: #ff6b6b;
+  margin-top: 8px;
+}
