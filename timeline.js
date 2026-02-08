@@ -29,13 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   nextBtn.addEventListener("click", () => {
     if (currentIndex < items.length - 1) {
-      showItem(currentIndex + 1);
+      showItem(currentIndex + 1, "next");
     }
   });
 
   prevBtn.addEventListener("click", () => {
     if (currentIndex > 0) {
-      showItem(currentIndex - 1);
+      showItem(currentIndex - 1 , "prev");
     }
   });
 
@@ -100,3 +100,42 @@ setLanguage(currentLang);
     menu.style.display =
       menu.style.display === "block" ? "none" : "block";
   }
+  // Timeline Animation
+ let items;
+let currentIndex = 0;
+
+document.addEventListener("DOMContentLoaded", () => {
+  items = document.querySelectorAll(".timeline-item");
+  showItem(0, "init");
+});
+
+function showItem(index, direction = "next") {
+  if (index === currentIndex) return;
+
+  const current = items[currentIndex];
+  const next = items[index];
+
+  // reset trạng thái
+  items.forEach(item => {
+    item.classList.remove("active", "exit");
+  });
+
+  // setup vị trí ban đầu cho item mới
+  next.style.transition = "none";
+  next.style.opacity = "0";
+
+  if (direction === "next") {
+    next.style.transform = "translate(40px, -40px) rotate(-6deg) scale(0.96)";
+  } else {
+    next.style.transform = "translate(-40px, -40px) rotate(6deg) scale(0.96)";
+  }
+
+  next.offsetHeight; // force reflow
+  next.style.transition = "";
+
+  // animate
+  current?.classList.add("exit");
+  next.classList.add("active");
+
+  currentIndex = index;
+}

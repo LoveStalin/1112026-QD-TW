@@ -163,3 +163,20 @@ html, body {
   color: #ff6b6b;
   margin-top: 8px;
 }
+.loading {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #5cff9a;
+  letter-spacing: 1px;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+.hidden {
+  display: none;
+}

@@ -107,6 +107,7 @@ const PASSWORD = "1112026-SL-TW"; // can change
 
 const link = document.getElementById("privateTimelineLink");
 const overlay = document.getElementById("lockOverlay");
+const lockBox = document.querySelector(".lock-box");
 const unlockBtn = document.getElementById("unlockBtn");
 const input = document.getElementById("passwordInput");
 const error = document.getElementById("lockError");
@@ -125,12 +126,28 @@ input.addEventListener("keydown", (e) => {
 
 function unlock() {
   if (input.value === PASSWORD) {
-    window.location.href = "timeline.html"; // ✅ vào link
+     // hiện fake loading
+  loadingText.classList.remove("hidden");
+  unlockBtn.disabled = true;
+
+  setTimeout(() => {
+    // cho vào timeline
+    window.location.href = "timeline.html";
+  }, 1500);
   } else {
     error.innerText = "Wrong password";
     input.value = "";
   }
 }
+// click ra ngoài box → đóng
+overlay.addEventListener("click", () => {
+  overlay.classList.add("hidden");
+});
+
+// click trong box thì KHÔNG đóng
+lockBox.addEventListener("click", e => {
+  e.stopPropagation();
+});
 console.log("LOCK SCRIPT LOADED");
 link.addEventListener("click", (e) => {
   e.preventDefault();
