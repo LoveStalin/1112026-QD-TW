@@ -240,6 +240,96 @@ html, body {
   display:inline-block
 }
 
+/* ===== PHOTO WALL OVERLAY ===== */
+.photo-wall-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.photo-wall-overlay.hidden {
+  display: none;
+}
+
+/* ===== MAIN FRAME ===== */
+.photo-wall {
+  width: 90%;
+  max-width: 900px;
+  background: linear-gradient(180deg, #1c2f3d, #12202b);
+  border: 2px solid #4aa3ff;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 170, 255, 0.35);
+  padding: 16px;
+  animation: popIn 0.25s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* ===== HEADER ===== */
+.photo-wall-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.photo-wall-title {
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #8fd3ff;
+}
+
+.photo-wall-close {
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ===== GRID ===== */
+.photo-wall-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.photo-slot {
+  aspect-ratio: 4 / 3;
+  background: #0f1b24;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-slot::after {
+  content: "+";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255,255,255,0.2);
+  font-size: 40px;
+  pointer-events: none;
+}
+
+.photo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 @media (max-width: 768px) {
   /* NAVBAR */
 .navbar {
@@ -376,3 +466,11 @@ html, body {
     font-size: 14px;
   }
 }
+.photo-wall-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .photo-wall {
+    max-height: 85vh;
+    overflow-y: auto;
+  }

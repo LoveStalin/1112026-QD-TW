@@ -104,3 +104,24 @@ setLanguage(currentLang);
     menu.style.display =
       menu.style.display === "block" ? "none" : "block";
   }
+function initPhotoWall() {
+  const overlay = document.getElementById("photoWallOverlay");
+  const closeBtn = overlay.querySelector(".photo-wall-close");
+  const moreBtn = document.getElementById("moreBtn");
+
+  moreBtn.addEventListener("click", () => {
+    overlay.classList.remove("hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    overlay.classList.add("hidden");
+  });
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      overlay.classList.add("hidden");
+    }
+  });
+}
+
+initPhotoWall();
