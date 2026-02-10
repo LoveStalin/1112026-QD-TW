@@ -104,24 +104,23 @@ setLanguage(currentLang);
     menu.style.display =
       menu.style.display === "block" ? "none" : "block";
   }
-function initPhotoWall() {
-  const overlay = document.getElementById("photoWallOverlay");
-  const closeBtn = overlay.querySelector(".photo-wall-close");
-  const moreBtn = document.getElementById("moreBtn");
+  // 
+  document.addEventListener('DOMContentLoaded', () => {
+  const moreBtn = document.querySelector('.more-btn'); // hoặc .more-btn
+  const overlay = document.getElementById("photo-wall-overlay");
+  const closeBtn = document.querySelector(".photo-wall-close");
 
-  moreBtn.addEventListener("click", () => {
-    overlay.classList.remove("hidden");
-  });
+  moreBtn.addEventListener('click', () => {
+  overlay.classList.add('show');
+});
 
-  closeBtn.addEventListener("click", () => {
-    overlay.classList.add("hidden");
-  });
+closeBtn.addEventListener('click', () => {
+  overlay.classList.remove('show');
+});
 
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) {
-      overlay.classList.add("hidden");
-    }
-  });
-}
-
-initPhotoWall();
+overlay.addEventListener('click', (e) => {
+  if (e.target === overlay) {
+    overlay.classList.remove('show');
+  }
+});
+});
