@@ -62,8 +62,8 @@ const translations = {
     about_dreams :" Hiện nay, mình muốn trở thành <span class=\"text-green\">Bộ đội</span> hoặc <span class=\"text-blue\">Phi công.</span>",
     about_future :"Bạn biết đấy, mình vẫn còn là học sinh. Vì vậy mình chưa thể quyết định tương lai của mình. Nhưng một điều chắc chắn là mình sẽ cố gắng hết sức để đạt được ước mơ của mình.",
     about_webdev :"Dưới đây là một chút về những gì mình đã làm trong lĩnh vực phát triển web cho đến nay:",
-    about_journey_1 :"<span class=\"text-green\">Tháng 7 năm 2025</span> Bắt đầu học Front-end (HTML, CSS, JS)",
-    about_journey_2 :"<span class=\"text-green\">2025–2026</span> Xây dựng các portfolio & dự án hoàn chỉnh",
+    about_journey_1 :"<span class=\"text-green\">Tháng 7 năm 2025:</span> Bắt đầu học Front-end (HTML, CSS, JS)",
+    about_journey_2 :"<span class=\"text-green\">2025–2026:</span> Xây dựng các portfolio & dự án hoàn chỉnh",
     about_journey_3 :"<span class=\"text-green\">Hiện tại:</span> Tiếp tục cải thiện kỹ năng của bản thân trong phát triển web",
     about_timeline :"Bạn muốn xem thông tin chi tiết hơn về mình?Xem thêm ở đây hihi 😉"
   }
