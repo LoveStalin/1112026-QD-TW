@@ -104,7 +104,7 @@ function toggleMenu() {
 }
   // Photo Wall
   document.addEventListener('DOMContentLoaded', () => {
-  const moreBtn = document.querySelector('.more-btn'); // hoặc .more-btn
+  const moreBtn = document.querySelector('.more-btn');
   const overlay = document.getElementById("photo-wall-overlay");
   const closeBtn = document.querySelector(".photo-wall-close");
 
