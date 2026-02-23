@@ -16,7 +16,7 @@ function closeModal() {
   overlay.classList.remove("active");
   modal.classList.remove("active");
 }
-const abilitiesBtn = document.querySelector(".btn.secondary"); 
+const abilitiesBtn = document.querySelector(".btn.secondary");
 const abilitiesModal = document.getElementById("abilitiesModal");
 const abilitiesClose = document.querySelector(".abilities-close");
 
@@ -41,7 +41,7 @@ const translations = {
     nav_projects: "Projects",
     nav_contact: "Contact",
 
-   hero_hi: "Hi, I’m",
+    hero_hi: "Hi, I’m",
     hero_name: "Nguyen Xuan Thanh",
     hero_or: "or",
     hero_alias: "XuanThanhSigma",
@@ -55,7 +55,14 @@ const translations = {
     modal_achievement_title: "View my achievement",
     modal_waiting_achievement: "Waiting for Update",
     modal_abilities_title: "My Abilities",
-    modal_abilities_desc: "I'm not done yet :)",
+    skill_level_general: "General",
+    skill_level_colonel: "Colonel",
+    skill_level_sergeant: "Sergeant",
+    skill_level_private: "Private",
+    skill_communication: "Communication & Presentation",
+    skill_problem_solving: "Problem Solving",
+    skill_leadership: "Leadership",
+
   },
 
   vi: {
@@ -63,7 +70,7 @@ const translations = {
     nav_projects: "Dự án",
     nav_contact: "Liên hệ",
 
-   hero_hi: "Hé lô, mình là",
+    hero_hi: "Hé lô, mình là",
     hero_name: "Nguyễn Xuân Thành",
     hero_or: "hay",
     hero_alias: "Xuân Thành Sigma",
@@ -77,7 +84,14 @@ const translations = {
     modal_achievement_title: "Thành tích của mình",
     modal_waiting_achievement: "Đang cập nhật",
     modal_abilities_title: "Kỹ năng của mình",
-    modal_abilities_desc: "Mình chưa hoàn thiện phần này :)"
+    skill_level_general: "Đại Tướng",
+    skill_level_colonel: "Đại Tá",
+    skill_level_sergeant: "Thượng Sĩ",
+    skill_level_private: "Binh Nhì",
+    skill_communication: "Giao tiếp & Thuyết trình",
+    skill_problem_solving: "Giải quyết vấn đề",
+    skill_leadership: "Lãnh đạo-Chỉ huy",
+
   }
 };
 // Language Toggle
@@ -107,25 +121,25 @@ langBtn.addEventListener("click", () => {
 setLanguage(currentLang);
 // Menu Toggle
 function toggleMenu() {
-    document.getElementById("sideMenu").classList.toggle("active");
+  document.getElementById("sideMenu").classList.toggle("active");
 }
-  // Photo Wall
-  document.addEventListener('DOMContentLoaded', () => {
+// Photo Wall
+document.addEventListener('DOMContentLoaded', () => {
   const moreBtn = document.querySelector('.more-btn');
   const overlay = document.getElementById("photo-wall-overlay");
   const closeBtn = document.querySelector(".photo-wall-close");
 
   moreBtn.addEventListener('click', () => {
-  overlay.classList.add('show');
-});
+    overlay.classList.add('show');
+  });
 
-closeBtn.addEventListener('click', () => {
-  overlay.classList.remove('show');
-});
-
-overlay.addEventListener('click', (e) => {
-  if (e.target === overlay) {
+  closeBtn.addEventListener('click', () => {
     overlay.classList.remove('show');
-  }
-});
+  });
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove('show');
+    }
+  });
 });

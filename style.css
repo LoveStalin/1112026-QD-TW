@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   font-family: 'Inter', sans-serif;
   background-color: #0b0f14;
@@ -39,61 +40,63 @@ html, body {
 .navbar nav a:hover {
   color: #ffffff;
 }
+
 /* icon 3 gạch */
 .menu-icon {
-    width: 30px;
-    cursor: pointer;
-    position: fixed;
-    top: 30px;
-    right: 30px;
-    z-index: 1001;
+  width: 30px;
+  cursor: pointer;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 1001;
 }
 
 .menu-icon span {
-    display: block;
-    height: 3px;
-    background: white;
-    margin: 6px 0;
-    transition: 0.3s;
+  display: block;
+  height: 3px;
+  background: white;
+  margin: 6px 0;
+  transition: 0.3s;
 }
 
 /* side menu */
 .side-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background: #111;
-    display: flex;
-    flex-direction: column;
-    padding-top: 120px;
-    transition: 0.4s ease;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  padding-top: 120px;
+  transition: 0.4s ease;
+  z-index: 1000;
 }
 
 /* khi mở */
 .side-menu.active {
-    right: 0;
+  right: 0;
 }
 
 /* nút bên trong */
 .menu-btn {
-    text-decoration: none;
-    color: white;
-    padding: 18px 40px;
-    margin: 10px 20px;
-    border-radius: 8px;
-    background: #1a1a1a;
-    transition: 0.3s;
-    font-size: 18px;
+  text-decoration: none;
+  color: white;
+  padding: 18px 40px;
+  margin: 10px 20px;
+  border-radius: 8px;
+  background: #1a1a1a;
+  transition: 0.3s;
+  font-size: 18px;
 }
 
 .menu-btn:hover {
-    background: #00ffcc;
-    color: black;
-    box-shadow: 0 0 15px #00ffcc;
+  background: #00ffcc;
+  color: black;
+  box-shadow: 0 0 15px #00ffcc;
 }
+
 /* ===== HERO ===== */
 .hero {
   min-height: 100vh;
@@ -157,41 +160,43 @@ html, body {
 .btn:hover {
   transform: translateY(-2px);
 }
+
 .lang-switch {
-    position: fixed;
-    top: 30px;
-    right: 80px; /* chỉnh nếu bị đụng menu */
-    display: flex;
-    gap: 10px;
-    z-index: 1000;
+  position: fixed;
+  top: 30px;
+  right: 80px;
+  /* chỉnh nếu bị đụng menu */
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
 }
 
 .flag {
-    width: 28px;
-    height: 20px;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: 0.3s;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: 0.3s;
 }
 
 .flag:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px #00ffcc;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #00ffcc;
 }
+
 .flag.active {
-    box-shadow: 0 0 12px #00ffcc;
-    transform: scale(1.1);
+  box-shadow: 0 0 12px #00ffcc;
+  transform: scale(1.1);
 }
+
 /* ===== AMBIENT GLOW ===== */
 .ambient-glow {
   position: absolute;
   width: 600px;
   height: 600px;
-  background: radial-gradient(
-    circle,
-    rgba(92, 255, 154, 0.15),
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(92, 255, 154, 0.15),
+      transparent 70%);
   top: 50%;
   left: 60%;
   transform: translate(-50%, -50%);
@@ -199,6 +204,7 @@ html, body {
   z-index: 1;
   pointer-events: none;
 }
+
 .hero-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -206,6 +212,7 @@ html, body {
   width: 100%;
   z-index: 2;
 }
+
 .hero-media {
   position: relative;
   display: flex;
@@ -213,6 +220,7 @@ html, body {
   align-items: center;
   width: 100%;
 }
+
 .image-card {
   background: #0f141a;
   border-radius: 20px;
@@ -227,6 +235,7 @@ html, body {
   border-radius: 14px;
   display: block;
 }
+
 .more-btn {
   position: absolute;
   top: -10px;
@@ -244,6 +253,7 @@ html, body {
 .more-btn:hover {
   background: rgba(92, 255, 154, 0.15);
 }
+
 /* ===== OVERLAY ===== */
 .overlay {
   position: fixed;
@@ -316,8 +326,61 @@ html, body {
   font-size: 15px;
   color: #b5b5b5;
 }
+
 .nav {
-  display:inline-block
+  display: inline-block
+}
+
+.skill-rank {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.skill-name {
+  font-weight: 500;
+}
+
+.skill-level {
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+/* Màu theo cấp bậc */
+.general {
+  background: linear-gradient(45deg, gold, orange);
+  color: black;
+}
+
+.colonel {
+  background: linear-gradient(45deg, #00ffcc, #00bfff);
+  color: black;
+}
+
+.sergeant {
+  background: linear-gradient(45deg, #888, #bbb);
+  color: black;
+}
+
+.private {
+  background: linear-gradient(45deg, #cd7f32, #b87333);
+  color: black;
+}
+
+.rank-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.rank-stars {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: gold;
+  text-shadow: 0 0 5px gold;
 }
 
 /* ===== PHOTO WALL OVERLAY ===== */
@@ -325,7 +388,7 @@ html, body {
   position: fixed;
   display: none;
   inset: 0;
-  background: rgba(0,0,0,0.65);
+  background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(6px);
   justify-content: center;
   align-items: center;
@@ -333,11 +396,13 @@ html, body {
   opacity: 0;
   transition: opacity 0.25s ease;
 }
+
 .photo-wall-overlay.show {
-  display:flex;
+  display: flex;
   opacity: 1;
   pointer-events: auto;
 }
+
 /* ===== MAIN FRAME ===== */
 .photo-wall {
   width: 90%;
@@ -351,8 +416,15 @@ html, body {
 }
 
 @keyframes popIn {
-  from { transform: scale(0.95); opacity: 0; }
-  to   { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* ===== HEADER ===== */
@@ -386,7 +458,7 @@ html, body {
 
 .photo-slot {
   background: #0f1b24;
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   overflow: hidden;
   position: relative;
@@ -399,7 +471,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgba(255,255,255,0.2);
+  color: rgba(255, 255, 255, 0.2);
   font-size: 40px;
   pointer-events: none;
 }
@@ -412,35 +484,37 @@ html, body {
 }
 
 @media (max-width: 768px) {
+
   /* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 28px;
-  position: relative;
-  z-index: 1000;
-}
-/* icon 3 gạch */
-.menu-icon {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    position: relative;
+    z-index: 1000;
+  }
+
+  /* icon 3 gạch */
+  .menu-icon {
     width: 30px;
     cursor: pointer;
     position: fixed;
     top: 30px;
     right: 30px;
     z-index: 1001;
-}
+  }
 
-.menu-icon span {
+  .menu-icon span {
     display: block;
     height: 3px;
     background: white;
     margin: 6px 0;
     transition: 0.3s;
-}
+  }
 
-/* side menu */
-.side-menu {
+  /* side menu */
+  .side-menu {
     position: fixed;
     top: 0;
     right: -100%;
@@ -452,15 +526,15 @@ html, body {
     padding-top: 120px;
     transition: 0.4s ease;
     z-index: 1000;
-}
+  }
 
-/* khi mở */
-.side-menu.active {
+  /* khi mở */
+  .side-menu.active {
     right: 0;
-}
+  }
 
-/* nút bên trong */
-.menu-btn {
+  /* nút bên trong */
+  .menu-btn {
     text-decoration: none;
     color: white;
     padding: 18px 40px;
@@ -469,16 +543,17 @@ html, body {
     background: #1a1a1a;
     transition: 0.3s;
     font-size: 18px;
-}
+  }
 
-.menu-btn:hover {
+  .menu-btn:hover {
     background: #00ffcc;
     color: black;
     box-shadow: 0 0 15px #00ffcc;
-}
+  }
 
   nav {
-    display: none; /* sau này làm hamburger */
+    display: none;
+    /* sau này làm hamburger */
     position: absolute;
     top: 60px;
     right: 20px;
@@ -486,13 +561,16 @@ html, body {
     padding: 14px 18px;
     border-radius: 12px;
   }
+
   nav.active {
     display: flex;
   }
-.ambient-glow,
-.overlay {
-  pointer-events: none;
-}
+
+  .ambient-glow,
+  .overlay {
+    pointer-events: none;
+  }
+
   .logo {
     font-size: 18px;
   }
@@ -545,7 +623,7 @@ html, body {
     font-size: 14px;
   }
 
-.photo-wall-grid {
+  .photo-wall-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 

@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6P23ZZZQHH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6P23ZZZQHH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-6P23ZZZQHH');
-</script>
+    gtag('config', 'G-6P23ZZZQHH');
+  </script>
   <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TM94RSVJ');</script>
-<!-- End Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TM94RSVJ');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nguyen Xuan Thanh's profile</title>
@@ -26,124 +30,191 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TM94RSVJ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<header class="navbar">
-  <div class="logo">XuanThanhSigma</div>
-  <div class="nav">
-<div class="menu-icon" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
-
-<div id="sideMenu" class="side-menu">
-    <a href="about.html" class="menu-btn" data-i18n="nav_about">About</a>
-    <a href="projects.html" class="menu-btn" data-i18n="nav_projects">Projects</a>
-    <a href="contact.html" class="menu-btn" data-i18n="nav_contact">Contact</a>
-</div>
-    <div class="lang-switch">
-    <img src="image/uk.png" id="langBtn" class="flag">
-</div>
-  </div>
-</header>
-
-
-<main class="hero">
-  <div class="hero-content">
-     <h1>
-  <span data-i18n="hero_hi">Hi, I'm</span>
-  <span class="highlight" data-i18n="hero_name">Nguyen Xuan Thanh</span>
-  <span data-i18n="hero_or">or</span>
-  <span class="highlight" data-i18n="hero_alias">XuanThanhSigma</span><br/>
-  <span data-i18n="hero_line1">I build this website</span><br/>
-  <span data-i18n="hero_line2">to showcase my portfolio</span>
-</h1>
-
-
-    <p data-i18n="hero_desc">
-      10th grader • Frontend developer • Basketball Player • Politics Lover
-    </p>
-
-    <div class="hero-actions">
-      <button class="btn primary" data-i18n="btn_achievement">
-        View My Achievement
-      </button>
-      <button class="btn secondary" data-i18n="btn_abilities">
-        My Abilities
-      </button>
-    </div>
-  </div>
-
-  <div class="ambient-glow"></div>
-
-  <div class="hero-media">
-    <button class="more-btn" data-i18n="btn_more">More →</button>
-
-    <div class="image-card">
-      <img src="image/wall/Basketball.jpg" alt="Basketball Achievement">
-    </div>
-  </div>
-
-  <div class="ambient-glow"></div>
-
-  <!-- OVERLAY -->
-  <div class="overlay" id="overlay"></div>
-
-  <!-- MODAL - ACHIEVEMENT -->
-  <div class="modal" id="achievementModal">
-    <div class="modal-header">
-      <h3 data-i18n="modal_achievement_title">View my achievement</h3>
-      <button class="close-btn" id="closeModal">×</button>
-    </div>
-
-    <div class="modal-content" data-i18n="modal_waiting_achievement">
-      Waiting for Update
-    </div>
-  </div>
-
-  <!-- MODAL - ABILITIES -->
-  <div class="modal" id="abilitiesModal">
-    <div class="modal-header">
-      <h3 data-i18n="modal_abilities_title">My Abilities</h3>
-      <button class="close-btn abilities-close">×</button>
-    </div>
-
-    <div class="modal-content" data-i18n="modal_abilities_desc">
-      I'm not done yet :)
-    </div>
-  </div>
-  <!-- PHOTO WALL MODAL -->
-<div id="photo-wall-overlay" class="photo-wall-overlay">
-  <div class="photo-wall">
-
-    <div class="photo-wall-header">
-      <span class="photo-wall-title">PHOTO WALL</span>
-      <button class="photo-wall-close">x</button>
-    </div>
-
-    <div class="photo-wall-grid">
-      <!-- mỗi ảnh là 1 item -->
-      <div class="photo-slot">
-        <img src="image/wall/1.jpg" alt="">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TM94RSVJ" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header class="navbar">
+    <div class="logo">XuanThanhSigma</div>
+    <div class="nav">
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-      <div class="photo-slot">
-        <img src="image/wall/2.jpg" alt="">
+
+      <div id="sideMenu" class="side-menu">
+        <a href="about.html" class="menu-btn" data-i18n="nav_about">About</a>
+        <a href="projects.html" class="menu-btn" data-i18n="nav_projects">Projects</a>
+        <a href="contact.html" class="menu-btn" data-i18n="nav_contact">Contact</a>
       </div>
-      <div class="photo-slot">
-        <img src="image/wall/3.jpg" alt="">
+      <div class="lang-switch">
+        <img src="image/uk.png" id="langBtn" class="flag">
       </div>
-      <!-- thêm bao nhiêu cũng được -->
+    </div>
+  </header>
+
+
+  <main class="hero">
+    <div class="hero-content">
+      <h1>
+        <span data-i18n="hero_hi">Hi, I'm</span>
+        <span class="highlight" data-i18n="hero_name">Nguyen Xuan Thanh</span>
+        <span data-i18n="hero_or">or</span>
+        <span class="highlight" data-i18n="hero_alias">XuanThanhSigma</span><br />
+        <span data-i18n="hero_line1">I build this website</span><br />
+        <span data-i18n="hero_line2">to showcase my portfolio</span>
+      </h1>
+
+
+      <p data-i18n="hero_desc">
+        10th grader • Frontend developer • Basketball Player • Politics Lover
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn primary" data-i18n="btn_achievement">
+          View My Achievement
+        </button>
+        <button class="btn secondary" data-i18n="btn_abilities">
+          My Abilities
+        </button>
+      </div>
     </div>
 
-  </div>
-</div>
+    <div class="ambient-glow"></div>
 
-</main>
+    <div class="hero-media">
+      <button class="more-btn" data-i18n="btn_more">More →</button>
 
-<script src="script.js"></script>
+      <div class="image-card">
+        <img src="image/wall/Basketball.jpg" alt="Basketball Achievement">
+      </div>
+    </div>
+
+    <div class="ambient-glow"></div>
+
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- MODAL - ACHIEVEMENT -->
+    <div class="modal" id="achievementModal">
+      <div class="modal-header">
+        <h3 data-i18n="modal_achievement_title">View my achievement</h3>
+        <button class="close-btn" id="closeModal">×</button>
+      </div>
+
+      <div class="modal-content" data-i18n="modal_waiting_achievement">
+        This section is under construction. Please check back later!
+      </div>
+    </div>
+    </div>
+
+    <!-- MODAL - ABILITIES -->
+    <div class="modal" id="abilitiesModal">
+      <div class="modal-header">
+        <h3 data-i18n="modal_abilities_title">My Skills</h3>
+        <button class="close-btn abilities-close">×</button>
+      </div>
+
+      <div class="modal-content">
+
+        <div class="skill-rank">
+          <span class="skill-name">HTML</span>
+          <div class="rank-wrapper">
+            <span class="rank-stars">⭐⭐⭐⭐</span>
+            <span class="skill-level general" data-i18n="skill_level_general">General</span>
+          </div>
+        </div>
+
+        <div class="skill-rank">
+          <span class="skill-name">CSS</span>
+          <div class="rank-wrapper">
+            <span class="rank-stars">⭐⭐⭐</span>
+            <span class="skill-level colonel" data-i18n="skill_level_colonel">Colonel</span>
+          </div>
+        </div>
+
+        <div class="skill-rank">
+          <span class="skill-name">JavaScript</span>
+          <div class="rank-wrapper">
+            <span class="rank-stars">⭐⭐⭐</span>
+            <span class="skill-level colonel" data-i18n="skill_level_colonel">Colonel</span>
+          </div>
+        </div>
+
+        <div class="skill-rank">
+          <span class="skill-name">NoSQL (MongoDB)</span>
+          <div class="rank-wrapper">
+            <span class="rank-stars">⭐⭐</span>
+            <span class="skill-level sergeant" data-i18n="skill_level_sergeant">Sergeant</span>
+          </div>
+        </div>
+
+        <div class="skill-rank">
+          <span class="skill-name">English</span>
+          <div class="rank-wrapper">
+            <span class="rank-stars">⭐⭐⭐</span>
+            <span class="skill-level colonel" data-i18n="skill_level_colonel">Colonel</span>
+          </div>
+        </div>
+
+        <div class="skill-rank">
+          <span class="skill-name" data-i18n="skill_communication">Communication & Presentation</span>
+          <div class="rank-wrapper">
+            <span class="rank-stars">⭐⭐⭐</span>
+            <span class="skill-level colonel" data-i18n="skill_level_colonel">Colonel</span>
+          </div>
+        </div>
+
+        <div class="skill-rank">
+          <span class="skill-name" data-i18n="skill_problem_solving">Problem Solving</span>
+          <div class="rank-wrapper">
+            <span class="rank-stars">⭐</span>
+            <span class="skill-level private" data-i18n="skill_level_private">Private</span>
+          </div>
+        </div>
+
+        <div class="skill-rank">
+          <span class="skill-name" data-i18n="skill_leadership">Leadership</span>
+          <div class="rank-wrapper">
+            <span class="rank-stars">⭐⭐⭐⭐</span>
+            <span class="skill-level general" data-i18n="skill_level_general">General</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- PHOTO WALL MODAL -->
+    <div id="photo-wall-overlay" class="photo-wall-overlay">
+      <div class="photo-wall">
+
+        <div class="photo-wall-header">
+          <span class="photo-wall-title">PHOTO WALL</span>
+          <button class="photo-wall-close">x</button>
+        </div>
+
+        <div class="photo-wall-grid">
+          <!-- mỗi ảnh là 1 item -->
+          <div class="photo-slot">
+            <img src="image/wall/1.jpg" alt="">
+          </div>
+          <div class="photo-slot">
+            <img src="image/wall/2.jpg" alt="">
+          </div>
+          <div class="photo-slot">
+            <img src="image/wall/3.jpg" alt="">
+          </div>
+          <!-- thêm bao nhiêu cũng được -->
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
