@@ -69,6 +69,7 @@ const translations = {
   }
 };
 let currentLang = "en";
+const langBtn = document.getElementById("langBtn");
 
 function setLanguage(lang, withTyping = false) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
@@ -77,24 +78,26 @@ function setLanguage(lang, withTyping = false) {
   });
 
   localStorage.setItem("lang", lang);
+  currentLang = lang;
+
+  // 🔥 đổi hình cờ
+  langBtn.src = currentLang === "en" ? "image/uk.png" : "image/vn.png";
 
   if (withTyping) {
-    startTyping(); // 🔥 CHỈ chạy khi đổi ngôn ngữ
+    startTyping();
   }
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   const savedLang = localStorage.getItem("lang") || "en";
   currentLang = savedLang;
-  langBtn.innerText = currentLang.toUpperCase();
 
-  setLanguage(currentLang, true); // typing
+  setLanguage(currentLang, true); // vẫn giữ typing khi load
 });
 
-
 langBtn.addEventListener("click", () => {
-  currentLang = currentLang === "en" ? "vi" : "en";
-  langBtn.innerText = currentLang.toUpperCase();
-  setLanguage(currentLang, true); // ✅ typing chạy lại
+  const newLang = currentLang === "en" ? "vi" : "en";
+  setLanguage(newLang, true); // typing chạy lại khi bấm
 });
 //hamburger menu
 function toggleMenu() {

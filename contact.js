@@ -22,21 +22,28 @@ const translations = {
 
    }
 };
-let currentLang = "en";
+// Language Toggle
+let currentLang = localStorage.getItem("lang") || "en";
+const langBtn = document.getElementById("langBtn");
 
 function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.dataset.i18n;
     el.textContent = translations[lang][key] || "";
   });
-  // lưu vào localStorage
+
   localStorage.setItem("lang", lang);
+  currentLang = lang;
+
+  // đổi hình cờ theo ngôn ngữ hiện tại
+  langBtn.src = currentLang === "en" ? "image/uk.png" : "image/vn.png";
 }
 
+// click để toggle
 langBtn.addEventListener("click", () => {
-  currentLang = currentLang === "en" ? "vi" : "en";
-  langBtn.innerText = currentLang.toUpperCase();
-  setLanguage(currentLang);
+  const newLang = currentLang === "en" ? "vi" : "en";
+  setLanguage(newLang);
 });
 
+// load trang giữ nguyên ngôn ngữ cũ
 setLanguage(currentLang);

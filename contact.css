@@ -39,6 +39,31 @@ html, body {
 .navbar nav a:hover {
   color: #ffffff;
 }
+.lang-switch {
+    position: fixed;
+    top: 30px;
+    right: 80px; /* chỉnh nếu bị đụng menu */
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.flag {
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.flag:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #00ffcc;
+}
+.flag.active {
+    box-shadow: 0 0 12px #00ffcc;
+    transform: scale(1.1);
+}
 /* icon 3 gạch */
 .menu-icon {
     width: 30px;
