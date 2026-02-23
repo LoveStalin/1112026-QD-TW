@@ -46,8 +46,8 @@ const translations = {
     about_dreams :" Nowadays, I want to become a <span class=\"text-green\">Soldier</span> or <span class=\"text-blue\">Pilot.</span>",
     about_future :" You know, I'm still a student. So I can't decide my future yet. But one thing for sure is that I will try my best to achieve my dreams.",
     about_webdev :"Here’s a little more about what I’ve done in web development so far:",
-    about_journey_1 :" <span class=\"text-green\">July of 2025</span> Started learning Front-end (HTML, CSS, JS)",
-    about_journey_2 :"<span class=\"text-green\">2025–2026</span> Built full portfolios & projects",
+    about_journey_1 :" <span class=\"text-green\">July of 2025:</span> Started learning Front-end (HTML, CSS, JS)",
+    about_journey_2 :"<span class=\"text-green\">2025–2026:</span> Built full portfolios & projects",
     about_journey_3 :"<span class=\"text-green\">Current:</span> Continuing to improve my skills in web development",
     about_timeline :"You want to see my deeper information?Check more 😉"
   },
@@ -98,10 +98,8 @@ langBtn.addEventListener("click", () => {
 });
 //hamburger menu
 function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display =
-      menu.style.display === "block" ? "none" : "block";
-  }
+    document.getElementById("sideMenu").classList.toggle("active");
+}
 // Lock timeline
 const PASSWORD = "1112026-SL-TW"; // can change
 

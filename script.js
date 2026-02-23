@@ -98,13 +98,11 @@ langBtn.addEventListener("click", () => {
 });
 
 setLanguage(currentLang);
-
-  function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display =
-      menu.style.display === "block" ? "none" : "block";
-  }
-  // 
+// Menu Toggle
+function toggleMenu() {
+    document.getElementById("sideMenu").classList.toggle("active");
+}
+  // Photo Wall
   document.addEventListener('DOMContentLoaded', () => {
   const moreBtn = document.querySelector('.more-btn'); // hoặc .more-btn
   const overlay = document.getElementById("photo-wall-overlay");

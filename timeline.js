@@ -47,6 +47,7 @@ const translations = {
     nav_home: "Home",
     nav_projects: "Projects",
     nav_contact: "Contact",
+    nav_about: "About",
     Nov2010: "<h2>1/11/2010 - Spawned</h2><p>6:00 a.m. I got spawned into this world. According to my mom, everything went smoothly. As for me? I had absolutely no idea what was going on. </p></div>",
     Year2013: "<h2>2013</h2><p>This year I unlocked some starter abilities: standing, walking, and saying a few Vietnamese words like Mom, Dad, and Hi. Basically, the demo version of a human was finally playable. </p></div>",
     Year2015: "<h2>2015</h2><p>I started kindergarten. Sounds cute. The experience was not. I got bullied, was weak both physically and mentally. Looking back now, yeah… this was probably where my first emotional scratches showed up</p></div>",
@@ -63,6 +64,7 @@ const translations = {
     nav_home: "Trang chủ",
     nav_projects: "Dự án",
     nav_contact: "Liên hệ",
+    nav_about: "Giới thiệu",
     Nov2010: "<h2>1/11/2010 - Được sinh ra</h2><p>6 giờ sáng. Tớ được sinh ra vào thế giới này. Theo lời mẹ kể thì mọi thứ diễn ra khá suôn sẻ. Còn mình thì… chưa kịp hiểu chuyện gì đang xảy ra.</p></div>",
     Year2013: "<h2>2013</h2><p>Năm này mình mở khóa được một số kỹ năng cơ bản: biết đứng, biết đi, và nói được vài từ tiếng Việt như Mẹ, Bố, và Chào. Về cơ bản thì phiên bản demo của con người cuối cùng cũng có thể chơi được rồi.</p></div>",
     Year2015: "<h2>2015</h2><p>Mình bắt đầu đi học mẫu giáo. Nghe thì cute đấy. Thực tế thì không hề vậy. Mình bị bắt nạt, yếu cả thể chất lẫn tinh thần. Nhìn lại bây giờ, có lẽ… đây là lúc những vết xước cảm xúc đầu tiên của mình xuất hiện.</p></div>",
@@ -95,11 +97,9 @@ langBtn.addEventListener("click", () => {
 setLanguage(currentLang);
 
 // Hamburger Menu
- function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display =
-      menu.style.display === "block" ? "none" : "block";
-  }
+function toggleMenu() {
+    document.getElementById("sideMenu").classList.toggle("active");
+}
   // Timeline Animation
  let items;
 let currentIndex = 0;
