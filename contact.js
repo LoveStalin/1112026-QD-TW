@@ -1,12 +1,12 @@
 
 // Hamburger Menu
 function toggleMenu() {
-    document.getElementById("sideMenu").classList.toggle("active");
+  document.getElementById("sideMenu").classList.toggle("active");
 }
- //Language Translation
+//Language Translation
 const translations = {
   en: {
-    nav_home: "Home", 
+    nav_home: "Home",
     nav_about: "About",
     nav_projects: "Projects",
     contact_title: "Contact Information",
@@ -15,12 +15,11 @@ const translations = {
   vi: {
     nav_home: "Trang chủ",
     nav_about: "Giới thiệu",
-    nav_projects: "Dự án",
-    nav_contact: "Liên hệ",
+    nav_projects: "Các dự án",
     contact_title: "Thông tin liên hệ",
     contact_description: "Tớ hướng nội,nhưng sẵn sàng đối thoại khi có người chủ động liên hệ.Dưới đây là thông tin liên hệ của mình(Thằng ngu này đang tìm kiếm người yêu nhé.)"
 
-   }
+  }
 };
 // Language Toggle
 let currentLang = localStorage.getItem("lang") || "en";

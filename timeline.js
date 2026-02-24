@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   prevBtn.addEventListener("click", () => {
     if (currentIndex > 0) {
-      showItem(currentIndex - 1 , "prev");
+      showItem(currentIndex - 1, "prev");
     }
   });
 
@@ -63,7 +63,7 @@ const translations = {
 
   vi: {
     nav_home: "Trang chủ",
-    nav_projects: "Dự án",
+    nav_projects: "Các dự án",
     nav_contact: "Liên hệ",
     nav_about: "Giới thiệu",
     Nov2010: "<h2>1/11/2010 - Được sinh ra</h2><p>6 giờ sáng. Tớ được sinh ra vào thế giới này. Theo lời mẹ kể thì mọi thứ diễn ra khá suôn sẻ. Còn mình thì… chưa kịp hiểu chuyện gì đang xảy ra.</p></div>",
@@ -107,10 +107,10 @@ setLanguage(currentLang);
 
 // Hamburger Menu
 function toggleMenu() {
-    document.getElementById("sideMenu").classList.toggle("active");
+  document.getElementById("sideMenu").classList.toggle("active");
 }
-  // Timeline Animation
- let items;
+// Timeline Animation
+let items;
 let currentIndex = 0;
 
 document.addEventListener("DOMContentLoaded", () => {

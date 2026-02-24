@@ -54,7 +54,7 @@ const translations = {
 
   vi: {
     nav_home: "Trang chủ",
-    nav_projects: "Các Dự án",
+    nav_projects: "Các dự án",
     nav_contact: "Liên hệ",
     about_title: "Thông tin chung về mình",
     about_name: "Tên đầy đủ của mình là <span class=\"text-green\">Nguyễn Xuân Thành</span> – nhưng bạn có thể gọi mình là <span class=\"text-green\">XuanThanhSigma</span>.",

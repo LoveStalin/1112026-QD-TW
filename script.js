@@ -69,7 +69,7 @@ const translations = {
 
   vi: {
     nav_about: "Giới thiệu",
-    nav_projects: "Dự án",
+    nav_projects: "Các dự án",
     nav_contact: "Liên hệ",
 
     hero_hi: "Hé lô, mình là",
