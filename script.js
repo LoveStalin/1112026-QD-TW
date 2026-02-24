@@ -16,7 +16,7 @@ function closeModal() {
   overlay.classList.remove("active");
   modal.classList.remove("active");
 }
-const abilitiesBtn = document.querySelector(".btn.secondary");
+const abilitiesBtn = document.querySelector(".btn.secondary"); // My Abillities
 const abilitiesModal = document.getElementById("abilitiesModal");
 const abilitiesClose = document.querySelector(".abilities-close");
 
@@ -62,7 +62,9 @@ const translations = {
     skill_communication: "Communication & Presentation",
     skill_problem_solving: "Problem Solving",
     skill_leadership: "Leadership",
-
+    achi_basketball: "<h4>Basketball Champion - School Level</h4> <p>Become Champion in December 2025</p>",
+    achi_tech: "<h4>Self-taught Front-end & Back-end Developer</h4> <p>Started from July 2025</p>",
+    achi_web: "<h4>Multiple Website Projects</h4> <p>Built & deployed independently</p>",
   },
 
   vi: {
@@ -91,7 +93,9 @@ const translations = {
     skill_communication: "Giao tiếp & Thuyết trình",
     skill_problem_solving: "Giải quyết vấn đề",
     skill_leadership: "Lãnh đạo-Chỉ huy",
-
+    achi_basketball: "<h4>Giải Nhất Bóng Rổ</h4> <p>Vô địch vào Tháng 12 năm 2025</p>",
+    achi_tech: "<h4>Lập Trình Viên Tự Học Front-end và Back-end</h4> <p>Khởi đầu vào tháng 7 năm 2025</p>",
+    achi_web: "<h4>Hàng loạt các dự án Website</h4> <p>Tự học,xây dựng và triển khai</p>",
   }
 };
 // Language Toggle
@@ -101,7 +105,7 @@ const langBtn = document.getElementById("langBtn");
 function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.dataset.i18n;
-    el.textContent = translations[lang][key] || "";
+    el.innerHTML = translations[lang][key] || "";
   });
 
   localStorage.setItem("lang", lang);

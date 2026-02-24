@@ -383,6 +383,33 @@ body {
   text-shadow: 0 0 5px gold;
 }
 
+.achievement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.achievement-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(92, 255, 154, 0.2);
+  transition: 0.3s;
+}
+
+.achievement-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px #22c55e;
+}
+
+.ach-icon {
+  font-size: 24px;
+}
+
 /* ===== PHOTO WALL OVERLAY ===== */
 .photo-wall-overlay {
   position: fixed;

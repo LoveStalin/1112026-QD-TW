@@ -1,32 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6P23ZZZQHH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6P23ZZZQHH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-6P23ZZZQHH');
-</script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TM94RSVJ');</script>
-<!-- End Google Tag Manager -->
+    gtag('config', 'G-6P23ZZZQHH');
+  </script>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-TM94RSVJ');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Nguyen Xuan Thanh</title>
-    <link rel="stylesheet" href="projects.css" />
+  <link rel="stylesheet" href="projects.css" />
 </head>
+
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TM94RSVJ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
- <h1>Projects - Coming Soon</h1>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TM94RSVJ" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <header class="navbar">
+    <div class="logo">XuanThanhSigma</div>
+    <div class="nav">
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div id="sideMenu" class="side-menu">
+        <a href="index.html" class="menu-btn" data-i18n="nav_home">Home</a>
+        <a href="about.html" class="menu-btn" data-i18n="nav_about">About</a>
+        <a href="contact.html" class="menu-btn" data-i18n="nav_contact">Contact</a>
+      </div>
+      <div class="lang-switch">
+        <img src="image/uk.png" id="langBtn" class="flag">
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="projects-wrapper">
+
+      <div class="project-item">
+        <div class="project-preview">
+          <img src="image/project1.png" alt="Portfolio Preview">
+        </div>
+
+        <div class="project-info">
+          <h3>First Website for Crush</h3>
+          <p>My first website built with pure HTML, CSS & JavaScript.Just a Simp Guy at that time😔</p>
+
+          <div class="tech-stack">
+            HTML • CSS • JavaScript
+          </div>
+
+          <div class="project-links">
+            <a href="https://happybirthdayphuonganhiloveu.netlify.app" target="_blank">Live</a>
+            <a href="https://github.com/LoveStalin/phuonganh-website/blob/main/index.html" target="_blank">Code</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="project-item">
+        <div class="project-preview">
+          <img src="image/project2.png" alt="Class Website">
+        </div>
+
+        <div class="project-info">
+          <h3>Hạc Sẹo Website</h3>
+          <p>A fun project built for my teammates to thank them.</p>
+
+          <div class="tech-stack">
+            HTML • CSS • JavaScript • Responsive
+          </div>
+
+          <div class="project-links">
+            <a href="https://xuanthanhdoithuong.netlify.app">Live</a>
+            <a href="https://github.com/LoveStalin/BongRoA5/blob/main/index.html" target="_blank">Code</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    </div>
+    <div class="lock-overlay" id="projectLock">
+      <div class="lock-box">
+        <h2>Classified Projects 🔒</h2>
+        <p>Access Restricted</p>
+
+        <input type="password" id="projectPassword" placeholder="Enter password" />
+        <button id="unlockProjectBtn">Unlock</button>
+        <p class="error" id="projectError"></p>
+      </div>
+    </div>
+  </main>
+  <script src="projects.js"></script>
 </body>
+
 </html>

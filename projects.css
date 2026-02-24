@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: #0b0f14;
+    color: #e6e6e6;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 24px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 20px;
+    color: #5cff9a;
+}
+
+.navbar nav a {
+    margin-left: 32px;
+    text-decoration: none;
+    color: #b5b5b5;
+    font-size: 14px;
+}
+
+.navbar nav a:hover {
+    color: #ffffff;
+}
+
+/* icon 3 gạch */
+.menu-icon {
+    width: 30px;
+    cursor: pointer;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 1001;
+}
+
+.menu-icon span {
+    display: block;
+    height: 3px;
+    background: white;
+    margin: 6px 0;
+    transition: 0.3s;
+}
+
+/* side menu */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    padding-top: 120px;
+    transition: 0.4s ease;
+    z-index: 1000;
+}
+
+/* khi mở */
+.side-menu.active {
+    right: 0;
+}
+
+/* nút bên trong */
+.menu-btn {
+    text-decoration: none;
+    color: white;
+    padding: 18px 40px;
+    margin: 10px 20px;
+    border-radius: 8px;
+    background: #1a1a1a;
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+.menu-btn:hover {
+    background: #00ffcc;
+    color: black;
+    box-shadow: 0 0 15px #00ffcc;
+}
+
+/* ==== Language Section ==== */
+.lang-switch {
+    position: fixed;
+    top: 30px;
+    right: 80px;
+    /* chỉnh nếu bị đụng menu */
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.flag {
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.flag:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #00ffcc;
+}
+
+.flag.active {
+    box-shadow: 0 0 12px #00ffcc;
+    transform: scale(1.1);
+}
+
+/* ==== Container ==== */
+.projects-wrapper {
+    padding: 120px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.project-item {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    border-bottom: 1px solid rgba(92, 255, 154, 0.2);
+    padding-bottom: 40px;
+}
+
+.project-preview img {
+    width: 420px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.project-preview img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px #22c55e;
+}
+
+.project-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #5cff9a;
+}
+
+.project-info p {
+    color: #b5b5b5;
+    margin-bottom: 10px;
+}
+
+.tech-stack {
+    color: #22c55e;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.project-links a {
+    text-decoration: none;
+    color: white;
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.project-links a:hover {
+    color: #22c55e;
+}
+
+/* ===== Lock Section ===== */
+.lock-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    /* QUAN TRỌNG: phải là flex */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.lock-box {
+    background: #0b0f14;
+    border: 1px solid #22c55e;
+    padding: 32px;
+    border-radius: 12px;
+    text-align: center;
+    width: 320px;
+}
+
+.lock-box input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 16px;
+    background: #000;
+    border: 1px solid #333;
+    color: #fff;
+}
+
+.lock-box button {
+    margin-top: 16px;
+    padding: 10px 20px;
+    background: #22c55e;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.error {
+    color: #ff6b6b;
+    margin-top: 8px;
+}
+
+.loading {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #5cff9a;
+    letter-spacing: 1px;
+    animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .project-item {
+        flex-direction: column;
+    }
+
+    .project-preview img {
+        width: 100%;
+    }
+}
