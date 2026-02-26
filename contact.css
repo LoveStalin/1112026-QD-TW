@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   font-family: 'Inter', sans-serif;
   background-color: #0b0f14;
@@ -39,105 +40,113 @@ html, body {
 .navbar nav a:hover {
   color: #ffffff;
 }
+
 .lang-switch {
-    position: fixed;
-    top: 30px;
-    right: 80px; /* chỉnh nếu bị đụng menu */
-    display: flex;
-    gap: 10px;
-    z-index: 1000;
+  position: fixed;
+  top: 30px;
+  right: 80px;
+  /* chỉnh nếu bị đụng menu */
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
 }
 
 .flag {
-    width: 28px;
-    height: 20px;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: 0.3s;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: 0.3s;
 }
 
 .flag:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px #00ffcc;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #00ffcc;
 }
+
 .flag.active {
-    box-shadow: 0 0 12px #00ffcc;
-    transform: scale(1.1);
+  box-shadow: 0 0 12px #00ffcc;
+  transform: scale(1.1);
 }
+
 /* icon 3 gạch */
 .menu-icon {
-    width: 30px;
-    cursor: pointer;
-    position: fixed;
-    top: 30px;
-    right: 30px;
-    z-index: 1001;
+  width: 30px;
+  cursor: pointer;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 1001;
 }
 
 .menu-icon span {
-    display: block;
-    height: 3px;
-    background: white;
-    margin: 6px 0;
-    transition: 0.3s;
+  display: block;
+  height: 3px;
+  background: white;
+  margin: 6px 0;
+  transition: 0.3s;
 }
 
 /* side menu */
 .side-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background: #111;
-    display: flex;
-    flex-direction: column;
-    padding-top: 120px;
-    transition: 0.4s ease;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  padding-top: 120px;
+  transition: 0.4s ease;
+  z-index: 1000;
 }
 
 /* khi mở */
 .side-menu.active {
-    right: 0;
+  right: 0;
 }
 
 /* nút bên trong */
 .menu-btn {
-    text-decoration: none;
-    color: white;
-    padding: 18px 40px;
-    margin: 10px 20px;
-    border-radius: 8px;
-    background: #1a1a1a;
-    transition: 0.3s;
-    font-size: 18px;
+  text-decoration: none;
+  color: white;
+  padding: 18px 40px;
+  margin: 10px 20px;
+  border-radius: 8px;
+  background: #1a1a1a;
+  transition: 0.3s;
+  font-size: 18px;
 }
 
 .menu-btn:hover {
-    background: #00ffcc;
-    color: black;
-    box-shadow: 0 0 15px #00ffcc;
+  background: #00ffcc;
+  color: black;
+  box-shadow: 0 0 15px #00ffcc;
 }
+
 /* ========== MAIN SECTION =========== */
 .contact-title {
-font-size: 36px;
+  font-size: 36px;
   font-weight: 600;
   margin-bottom: 24px;
   text-align: center;
   color: #5cff9a;
   margin-top: 120px;
 }
+
 .contact-section {
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 70vh;
 }
+
 .contact-card {
   width: 90%;
   max-width: 800px;
 }
+
 .contact-btn {
   display: flex;
   align-items: center;
@@ -157,20 +166,42 @@ font-size: 36px;
 
 .contact-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(0,170,255,0.5);
+  box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
   background: linear-gradient(180deg, #233b4d, #142833);
 }
+
 .contact-icon {
-  background:transparent;
+  background: transparent;
   width: 20px;
   height: 20px;
   border-radius: 50%;
 }
+
 /* ===== ROOT ===== */
-.fa-github { color: #ffffff; }
-.fa-facebook-f { color: #1877F2; }
-.fa-discord { color: #5865F2; }
-.fa-tiktok { color: #ff0050; }
-.fa-envelope { color: #EA4335; }
+.fa-github {
+  color: #ffffff;
+}
+
+.fa-facebook-f {
+  color: #1877F2;
+}
+
+.fa-discord {
+  color: #5865F2;
+}
+
+.fa-tiktok {
+  color: #ff0050;
+}
+
+.fa-envelope {
+  color: #EA4335;
+}
+
 /* ===== FOOTER ===== */
-footer{text-align:center;margin-top:18px;color:#5cff9a;font-size:20px;}
+footer {
+  text-align: center;
+  margin-top: 18px;
+  color: #5cff9a;
+  font-size: 20px;
+}

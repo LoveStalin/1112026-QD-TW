@@ -5,7 +5,12 @@ const errorText = document.getElementById("projectError");
 
 unlockBtn.addEventListener("click", () => {
     if (passwordInput.value === "1112026-SL-TW") { // đổi pass ở đây
-        lockOverlay.style.display = "none";
+        loadingText.classList.remove("hidden");
+        unlockBtn.disabled = true;
+        setTimeout(() => {
+            // cho vào trang chính
+            lockOverlay.style.display = "none";
+        }, 1500);
     } else {
         errorText.textContent = "Wrong password.";
     }

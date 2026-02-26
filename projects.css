@@ -183,10 +183,14 @@ body {
     margin-bottom: 12px;
 }
 
+.project-links {
+    display: flex;
+    gap: 20px;
+}
+
 .project-links a {
     text-decoration: none;
     color: white;
-    margin-right: 15px;
     font-size: 14px;
 }
 

@@ -148,3 +148,25 @@ function showItem(index, direction = "next") {
 
   currentIndex = index;
 }
+const unlockBtn = document.getElementById("unlockTimelineBtn");
+const passwordInput = document.getElementById("timelinePassword");
+const lockOverlay = document.getElementById("timelineLock");
+const errorText = document.getElementById("timelineError");
+
+unlockBtn.addEventListener("click", () => {
+  if (passwordInput.value === "JaMorantSigma67") { // đổi pass ở đây
+    loadingText.classList.remove("hidden");
+    unlockBtn.disabled = true;
+    setTimeout(() => {
+      // cho vào trang chính
+      lockOverlay.style.display = "none";
+    }, 1500);
+  } else {
+    errorText.textContent = "Wrong password.";
+  }
+});
+passwordInput.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    unlockBtn.click();
+  }
+});
