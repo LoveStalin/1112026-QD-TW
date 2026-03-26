@@ -48,7 +48,7 @@ const translations = {
     about_webdev: "Here’s a little more about what I’ve done in web development so far:",
     about_journey_1: " <span class=\"text-green\">July of 2025:</span> Started learning Front-end (HTML, CSS, JS)",
     about_journey_2: "<span class=\"text-green\">2025–2026:</span> Built full portfolios & projects",
-    about_journey_3: "<span class=\"text-green\">Current:</span> Continuing to improve my skills in web development",
+    about_journey_3: "<span class=\"text-green\">Current:</span> Continuing to improve my skills in web development and hesitating to learn Data Science or Cybersecurity",
     about_timeline: "You want to see my deeper information?Check more 😉"
   },
 
@@ -64,7 +64,7 @@ const translations = {
     about_webdev: "Dưới đây là một chút về những gì mình đã làm trong lĩnh vực phát triển web cho đến nay:",
     about_journey_1: "<span class=\"text-green\">Tháng 7 năm 2025:</span> Bắt đầu học Front-end (HTML, CSS, JS)",
     about_journey_2: "<span class=\"text-green\">2025–2026:</span> Xây dựng các portfolio & dự án hoàn chỉnh",
-    about_journey_3: "<span class=\"text-green\">Hiện tại:</span> Tiếp tục cải thiện kỹ năng của bản thân trong phát triển web",
+    about_journey_3: "<span class=\"text-green\">Hiện tại:</span> Tiếp tục cải thiện kỹ năng của bản thân trong phát triển web và đang cân nhắc học ngành Dữ liệu và Bảo vệ Mạng",
     about_timeline: "Bạn muốn xem thông tin chi tiết hơn về mình?Xem thêm ở đây hihi 😉"
   }
 };
