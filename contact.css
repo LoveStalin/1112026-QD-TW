@@ -199,9 +199,11 @@ body {
 }
 
 /* ===== FOOTER ===== */
-footer {
+footer,
+.contact-description {
   text-align: center;
   margin-top: 18px;
   color: #5cff9a;
   font-size: 20px;
+  alignment-baseline: middle;
 }

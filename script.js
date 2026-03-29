@@ -44,10 +44,10 @@ const translations = {
     hero_hi: "Hi, I’m",
     hero_name: "Nguyen Xuan Thanh",
     hero_or: "or",
-    hero_alias: "XuanThanhSigma",
+    hero_alias: "ThanhDeveloper",
     hero_line1: "I build this website",
     hero_line2: "to showcase my portfolio",
-    hero_desc: "10th grader • Frontend developer • Basketball Player • Politics Lover",
+    hero_desc: " High Schooler • Frontend developer & Backend developer • Basketball Player • Politics Lover",
     btn_more: "More →",
     btn_achievement: "View My Achievement",
     btn_abilities: "My Abilities",
@@ -75,12 +75,12 @@ const translations = {
     hero_hi: "Hé lô, mình là",
     hero_name: "Nguyễn Xuân Thành",
     hero_or: "hay",
-    hero_alias: "Xuân Thành Sigma",
+    hero_alias: "Thành Developer",
     hero_line1: "Mình xây dựng trang web này",
     hero_line2: "để giới thiệu về bản thân mình",
-    hero_desc: "Học sinh lớp 10 • Lập trình Frontend • Cầu thủ bóng rổ • Yêu thích chính trị",
+    hero_desc: "Học sinh cấp 3 • Lập trình viên Frontend & Backend • Bôn lờ bóng rổ • Yêu thích chính trị",
     btn_more: "Xem thêm →",
-    btn_achievement: "Xem thành tích",
+    btn_achievement: "Xem thành tích của mình",
     btn_abilities: "Kỹ năng của mình",
 
     modal_achievement_title: "Thành tích của mình",
@@ -112,12 +112,12 @@ function setLanguage(lang) {
   currentLang = lang;
 
   // đổi hình cờ theo ngôn ngữ hiện tại
-  langBtn.src = currentLang === "en" ? "image/uk.png" : "image/vn.png";
+  langBtn.src = currentLang === "vi" ? "image/uk.png" : "image/vn.png";
 }
 
 // click để toggle
 langBtn.addEventListener("click", () => {
-  const newLang = currentLang === "en" ? "vi" : "en";
+  const newLang = currentLang === "vi" ? "en" : "vi";
   setLanguage(newLang);
 });
 

@@ -93,12 +93,12 @@ function setLanguage(lang) {
   currentLang = lang;
 
   // đổi hình cờ theo ngôn ngữ hiện tại
-  langBtn.src = currentLang === "en" ? "image/uk.png" : "image/vn.png";
+  langBtn.src = currentLang === "vi" ? "image/uk.png" : "image/vn.png";
 }
 
 // click để toggle
 langBtn.addEventListener("click", () => {
-  const newLang = currentLang === "en" ? "vi" : "en";
+  const newLang = currentLang === "vi" ? "en" : "vi";
   setLanguage(newLang);
 });
 
