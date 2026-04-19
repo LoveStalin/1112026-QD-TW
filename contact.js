@@ -10,13 +10,22 @@ const translations = {
     nav_about: "About",
     nav_projects: "Projects",
     contact_title: "Contact Information",
+    facebook_infor: "Facebook",
+    discord_infor:"Discord",
+    github_infor: "GitHub",
+    tiktok_infor:"TikTok",
     contact_description: "I’m an introvert, but I’m open to conversations when someone takes the initiative to reach out. Below is my contact information. Feel free to connect with me on any of these platforms, and I’ll do my best to respond when I can. Looking forward to hearing from you!"
   },
   vi: {
     nav_home: "Trang chủ",
     nav_about: "Giới thiệu",
     nav_projects: "Các dự án",
+    facebook_infor: "Phở Bò",
+    discord_infor:"Đít cót",
+    github_infor: "Pon Hắp",
+    tiktok_infor:"Tích tóc",
     contact_title: "Thông tin liên hệ",
+
     contact_description: "Tớ hướng nội,nhưng sẵn sàng đối thoại khi có người chủ động liên hệ.Dưới đây là thông tin liên hệ của mình hãy thoải mái kết nối với mình trên bất kỳ nền tảng nào, và mình sẽ cố gắng trả lời khi có thể. Mong được nhận tin nhắn từ bạn!"
 
   }
