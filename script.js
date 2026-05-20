@@ -65,6 +65,9 @@ const translations = {
     achi_basketball: "<h4>Basketball Champion - School Level</h4> <p>Become Champion in December 2025</p>",
     achi_tech: "<h4>Self-taught Front-end & Back-end Developer</h4> <p>Started from July 2025</p>",
     achi_web: "<h4>Multiple Website Projects</h4> <p>Built & deployed independently</p>",
+    visitor_title: "Brooo, wanna appear here?Leave a mark on the web so Thanh knows who dropped by!",
+    visitor_placeholder: "Write your name here!",
+    visitor_btn: "Send",
   },
 
   vi: {
@@ -96,8 +99,12 @@ const translations = {
     achi_basketball: "<h4>Giải Nhất Bóng Rổ</h4> <p>Vô địch vào Tháng 12 năm 2025</p>",
     achi_tech: "<h4>Lập Trình Viên Tự Học Front-end và Back-end</h4> <p>Khởi đầu vào tháng 7 năm 2025</p>",
     achi_web: "<h4>Hàng loạt các dự án Website</h4> <p>Tự học,xây dựng và triển khai</p>",
+    visitor_title: "Brooo, muốn xuất hiện ở đây à?Hãy 'đánh dấu chủ quyền' vào web để Thành biết ai đã ghé thăm nha!",
+    visitor_placeholder: "Viết tên của bạn vào đây!",
+    visitor_btn: "Gửi",
   }
 };
+
 // Language Toggle
 let currentLang = localStorage.getItem("lang") || "en";
 const langBtn = document.getElementById("langBtn");
@@ -107,7 +114,14 @@ function setLanguage(lang) {
     const key = el.dataset.i18n;
     el.innerHTML = translations[lang][key] || "";
   });
+  // placeholder translation
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
 
+    const key = el.dataset.i18nPlaceholder;
+
+    el.placeholder = translations[lang][key] || "";
+
+  });
   localStorage.setItem("lang", lang);
   currentLang = lang;
 
@@ -147,3 +161,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+const visitorList = document.getElementById("visitorList");
+
+window.onload = () => {
+
+  const savedVisitors =
+    JSON.parse(localStorage.getItem("visitors")) || [];
+
+  savedVisitors.forEach(visitor => {
+    createVisitor(visitor.name, visitor.time);
+  });
+
+};
+
+function addVisitor() {
+
+  const input = document.getElementById("visitorName");
+
+  const name = input.value.trim();
+
+  if (name === "") {
+    return;
+  }
+
+  const currentTime =
+    new Date().toLocaleString("vi-VN");
+
+  createVisitor(name, currentTime);
+
+  const savedVisitors =
+    JSON.parse(localStorage.getItem("visitors")) || [];
+
+  savedVisitors.unshift({
+    name: name,
+    time: currentTime
+  });
+
+  localStorage.setItem(
+    "visitors",
+    JSON.stringify(savedVisitors)
+  );
+
+  input.value = "";
+}
+
+function createVisitor(name, time) {
+
+  const newVisitor =
+    document.createElement("div");
+
+  newVisitor.classList.add("visitor-item");
+
+  newVisitor.innerHTML = `
+        <span class="visitor-name">${name}</span>
+        đã đến đây!
+        <div class="visitor-time">${time}</div>
+    `;
+
+  visitorList.prepend(newVisitor);
+}

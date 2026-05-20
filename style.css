@@ -510,6 +510,106 @@ body {
   display: block;
 }
 
+.visitor-section {
+  width: 100%;
+  margin-top: 120px;
+  padding: 40px;
+}
+
+.visitor-title {
+  color: #8bff75;
+  font-size: 24px;
+  margin-bottom: 40px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.visitor-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.visitor-input-box {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.visitor-input-box input {
+  width: 100%;
+  height: 180px;
+  background: #8bff75;
+  border: none;
+  outline: none;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  color: black;
+}
+
+.visitor-input-box button {
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background: #8bff75;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.visitor-input-box button:hover {
+  transform: scale(1.05);
+}
+
+.visitor-list {
+  width: 320px;
+  min-height: 250px;
+  border: 2px solid #4eff9f;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+.visitor-item {
+  margin-bottom: 18px;
+  padding: 12px;
+  border-left: 3px solid #8bff75;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+
+  animation: fadeIn 0.4s ease;
+}
+
+.visitor-name {
+  color: #8bff75;
+  font-weight: bold;
+}
+
+.visitor-time {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #888;
+}
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
 @media (max-width: 768px) {
 
   /* NAVBAR */

@@ -235,8 +235,35 @@
 
       </div>
     </div>
-  </main>
 
+  </main>
+  <section class="visitor-section">
+
+    <h2 class="visitor-title" data-i18n="visitor_title">
+      Brooo, wanna appear here?
+      Leave a mark on the web so Thanh knows who dropped by!
+    </h2>
+
+    <div class="visitor-container">
+
+      <!-- Ô nhập -->
+      <div class="visitor-input-box">
+
+        <input type="text" id="visitorName" data-i18n-placeholder="visitor_placeholder" />
+        <button onclick="addVisitor()" data-i18n="visitor_btn">
+          Send
+        </button>
+
+      </div>
+
+      <!-- Danh sách người ghé -->
+      <div class="visitor-list" id="visitorList">
+
+      </div>
+
+    </div>
+
+  </section>
   <script src="script.js"></script>
 </body>
 
