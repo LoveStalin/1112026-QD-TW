@@ -1,4 +1,4 @@
-const CACHE_NAME = 'site-cache-v3';
+const CACHE_NAME = 'site-cache-v4';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -18,15 +18,37 @@ const urlsToCache = [
     '/timeline.js',
 ];
 
+function cleanResponse(response) {
+    if (!response || !response.ok) return response;
+
+    return new Response(response.clone().body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: response.headers,
+    });
+}
+
+function cacheFallback(request) {
+    const requestUrl = new URL(request.url);
+
+    return caches.match(request)
+        .then(cached => cached || caches.match(requestUrl.pathname))
+        .then(cached => cached || caches.match('/index.html'));
+}
+
 self.addEventListener('install', event => {
     self.skipWaiting();
     event.waitUntil(
         caches.open(CACHE_NAME).then(async cache => {
             for (const url of urlsToCache) {
                 try {
-                    const response = await fetch(url, { cache: 'no-store' });
-                    if (response && response.ok && !response.redirected) {
-                        await cache.put(url, response.clone());
+                    const response = await fetch(url, {
+                        cache: 'no-store',
+                        redirect: 'follow',
+                    });
+
+                    if (response && response.ok) {
+                        await cache.put(url, cleanResponse(response));
                     } else {
                         console.warn('sw: fetch not ok for', url, response && response.status);
                     }
@@ -59,7 +81,15 @@ self.addEventListener('fetch', event => {
                 cache: 'no-store',
                 credentials: 'same-origin',
                 redirect: 'follow',
-            }).catch(() => caches.match(event.request).then(cached => cached || caches.match('/index.html')))
+            }).then(networkRes => {
+                if (!networkRes || !networkRes.ok) return networkRes;
+
+                const clean = cleanResponse(networkRes);
+                caches.open(CACHE_NAME).then(cache => {
+                    cache.put(requestUrl.pathname, clean.clone());
+                });
+                return clean;
+            }).catch(() => cacheFallback(event.request))
         );
         return;
     }
@@ -67,12 +97,14 @@ self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request).then(cached => {
             if (cached) return cached;
+
             return fetch(event.request).then(networkRes => {
-                if (!networkRes || networkRes.status !== 200 || networkRes.redirected) return networkRes;
-                const copy = networkRes.clone();
-                caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-                return networkRes;
-            }).catch(() => caches.match('/index.html'));
+                if (!networkRes || networkRes.status !== 200) return networkRes;
+
+                const clean = cleanResponse(networkRes);
+                caches.open(CACHE_NAME).then(cache => cache.put(event.request, clean.clone()));
+                return clean;
+            }).catch(() => caches.match(event.request))
         })
     );
 });
