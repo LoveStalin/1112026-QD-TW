@@ -4,13 +4,17 @@ const overlay = document.getElementById("overlay");
 const modal = document.getElementById("achievementModal");
 const closeBtn = document.getElementById("closeModal");
 
-openBtn.addEventListener("click", () => {
-  overlay.classList.add("active");
-  modal.classList.add("active");
-});
+if (openBtn) {
+  openBtn.addEventListener("click", () => {
+    overlay.classList.add("active");
+    modal.classList.add("active");
+  });
+} else {
+  console.warn('openBtn not found');
+}
 
-closeBtn.addEventListener("click", closeModal);
-overlay.addEventListener("click", closeModal);
+if (closeBtn) closeBtn.addEventListener("click", closeModal);
+if (overlay) overlay.addEventListener("click", closeModal);
 
 function closeModal() {
   overlay.classList.remove("active");
@@ -21,14 +25,18 @@ const abilitiesModal = document.getElementById("abilitiesModal");
 const abilitiesClose = document.querySelector(".abilities-close");
 
 // Open abilities modal
-abilitiesBtn.addEventListener("click", () => {
-  overlay.classList.add("active");
-  abilitiesModal.classList.add("active");
-});
+if (abilitiesBtn) {
+  abilitiesBtn.addEventListener("click", () => {
+    overlay.classList.add("active");
+    if (abilitiesModal) abilitiesModal.classList.add("active");
+  });
+} else {
+  console.warn('abilitiesBtn not found');
+}
 
 // Close abilities modal
-abilitiesClose.addEventListener("click", closeAbilitiesModal);
-overlay.addEventListener("click", closeAbilitiesModal);
+if (abilitiesClose) abilitiesClose.addEventListener("click", closeAbilitiesModal);
+if (overlay) overlay.addEventListener("click", closeAbilitiesModal);
 
 function closeAbilitiesModal() {
   overlay.classList.remove("active");
@@ -130,10 +138,14 @@ function setLanguage(lang) {
 }
 
 // click để toggle
-langBtn.addEventListener("click", () => {
-  const newLang = currentLang === "vi" ? "en" : "vi";
-  setLanguage(newLang);
-});
+if (langBtn) {
+  langBtn.addEventListener("click", () => {
+    const newLang = currentLang === "vi" ? "en" : "vi";
+    setLanguage(newLang);
+  });
+} else {
+  console.warn('langBtn not found');
+}
 
 // load trang giữ nguyên ngôn ngữ cũ
 setLanguage(currentLang);
@@ -220,10 +232,13 @@ function createVisitor(name, time) {
 
   visitorList.prepend(newVisitor);
 }
-if ("serviceWorker" in Navigator) {
-  window.addEventListener("load" ,() => {
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js")
-.then(() => console.log("ĐỊT MẸ SW RA RỒI~~~~"))
-.catch(err=>console.log("NGU LỒN RỒI EM",err));
+      .then(() => console.log("Service worker registered"))
+      .catch(err => console.error("Service worker registration failed:", err));
   });
+} else {
+  console.warn('Service workers are not supported in this browser');
 }
