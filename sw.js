@@ -1,4 +1,4 @@
-const CACHE_NAME = 'site-cache-v4';
+const CACHE_NAME = 'site-cache-v5';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -16,6 +16,33 @@ const urlsToCache = [
     '/timeline.html',
     '/timeline.css',
     '/timeline.js',
+    '/img/2010-left.jpg',
+    '/img/2010-right.jpg',
+    '/img/2013-left.jpg',
+    '/img/2013-right.JPG',
+    '/img/2015-left.JPG',
+    '/img/2015-right.JPG',
+    '/img/2016-left.JPG',
+    '/img/2016-right.JPG',
+    '/img/2018-left.JPG',
+    '/img/2018-right.JPG',
+    '/img/2020-left.JPG',
+    '/img/2020-right.JPG',
+    '/img/6-2024-left.jpg',
+    '/img/6-2024-right.jpg',
+    '/img/6-2025-left.jpg',
+    '/img/6-2025-right.jpg',
+    '/image/locket.png',
+    '/image/project1.png',
+    '/image/project2.png',
+    '/image/project3.png',
+    '/image/uk.png',
+    '/image/vn.png',
+    '/image/zalo.png',
+    '/image/wall/1.jpg',
+    '/image/wall/2.jpg',
+    '/image/wall/3.jpg',
+    '/image/wall/Basketball.jpg',
 ];
 
 function cleanResponse(response) {
