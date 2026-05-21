@@ -517,7 +517,7 @@ body {
 }
 
 .visitor-title {
-  color: #8bff75;
+  color: #5cff9a;
   font-size: 24px;
   margin-bottom: 40px;
   text-align: center;
@@ -542,7 +542,7 @@ body {
 .visitor-input-box input {
   width: 100%;
   height: 180px;
-  background: #8bff75;
+  background: #5cff9a;
   border: none;
   outline: none;
   padding: 20px;
@@ -555,7 +555,7 @@ body {
   height: 50px;
   border: none;
   border-radius: 10px;
-  background: #8bff75;
+  background: #5cff9a;
   color: black;
   font-weight: bold;
   cursor: pointer;
@@ -569,7 +569,7 @@ body {
 .visitor-list {
   width: 320px;
   min-height: 250px;
-  border: 2px solid #4eff9f;
+  border: 2px solid #5cff9a;
   padding: 20px;
   border-radius: 10px;
   overflow-y: auto;
@@ -578,7 +578,7 @@ body {
 .visitor-item {
   margin-bottom: 18px;
   padding: 12px;
-  border-left: 3px solid #8bff75;
+  border-left: 3px solid #5cff9a;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 8px;
 
@@ -586,7 +586,7 @@ body {
 }
 
 .visitor-name {
-  color: #8bff75;
+  color: #5cff9a;
   font-weight: bold;
 }
 

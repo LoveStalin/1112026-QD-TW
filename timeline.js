@@ -172,7 +172,7 @@ passwordInput.addEventListener("keypress", function (e) {
 });
 if ("serviceWorker" in Navigator) {
   window.addEventListener("load" ,() => {
-    navigator.serviceWorker.register("/sw.js")
+    navigator.serviceWorker.register("./sw.js")
 .then(() => console.log("ĐỊT MẸ SW RA RỒI~~~~"))
 .catch(err=>console.log("NGU LỒN RỒI EM",err));
   });
