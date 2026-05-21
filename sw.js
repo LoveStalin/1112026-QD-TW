@@ -1,24 +1,24 @@
 const CACHE_NAME="portfolio"
 //CACHE
 const FILE_TO_CACHE= [
-    "/",
-    "/index.html",
-    "/style.css",
-    "/script.js",
-    "/about.html",
-    "/about.css",
-    "/about.js",
-    "/timeline.html",
-    "/timeline.css",
-    "/timeline.js",
-    "/contact.html",
-    "/contact.css",
-    "/contact.js",
-    "/project.html",
-    "/project.css",
-    "/project.js",
+    "./",
+    "./index.html",
+    "./style.css",
+    "./script.js",
+    "./about.html",
+    "./about.css",
+    "./about.js",
+    "./timeline.html",
+    "./timeline.css",
+    "./timeline.js",
+    "./contact.html",
+    "./contact.css",
+    "./contact.js",
+    "./project.html",
+    "./project.css",
+    "./project.js",
 ];
-//install cache
+//install caches
 self.addEventListener("install",(event) => { 
     event.waitUntil(
 caches.open(CACHE_NAME)
@@ -26,7 +26,7 @@ caches.open(CACHE_NAME)
     cache.addAll(FILE_TO_CACHE))
     );
 });
-//fetch cache
+//fetch 
 self.addEventListener("fetch",(event) => { 
     event.respondWith(
         catches.match(event.request)
