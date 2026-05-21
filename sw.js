@@ -1,4 +1,4 @@
-const CACHE_NAME = 'site-cache-v5';
+const CACHE_NAME = 'site-cache-v7';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -45,22 +45,45 @@ const urlsToCache = [
     '/image/wall/Basketball.jpg',
 ];
 
-function cleanResponse(response) {
+async function cleanResponse(response) {
     if (!response || !response.ok) return response;
 
-    return new Response(response.clone().body, {
+    if (!response.redirected) return response.clone();
+
+    const headers = new Headers();
+    const contentType = response.headers.get('content-type');
+    if (contentType) headers.set('content-type', contentType);
+
+    return new Response(await response.clone().blob(), {
         status: response.status,
         statusText: response.statusText,
-        headers: response.headers,
+        headers,
     });
 }
 
 function cacheFallback(request) {
     const requestUrl = new URL(request.url);
+    const path = requestUrl.pathname === '/' ? '/index.html' : requestUrl.pathname;
 
     return caches.match(request)
-        .then(cached => cached || caches.match(requestUrl.pathname))
-        .then(cached => cached || caches.match('/index.html'));
+        .then(cached => cached || caches.match(path))
+        .then(cached => cached || caches.match('/'))
+        .then(cached => cached || caches.match('/index.html'))
+        .then(cached => cached || new Response('Offline page is not cached yet.', {
+            status: 503,
+            headers: { 'content-type': 'text/plain; charset=utf-8' },
+        }));
+}
+
+function assetFallback(request) {
+    if (request.destination === 'image') {
+        return new Response(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="1" height="1"></svg>',
+            { headers: { 'content-type': 'image/svg+xml' } }
+        );
+    }
+
+    return new Response('', { status: 503 });
 }
 
 self.addEventListener('install', event => {
@@ -75,7 +98,14 @@ self.addEventListener('install', event => {
                     });
 
                     if (response && response.ok) {
-                        await cache.put(url, cleanResponse(response));
+                        const clean = await cleanResponse(response);
+                        await cache.put(url, clean.clone());
+
+                        if (url === '/') {
+                            await cache.put('/index.html', clean.clone());
+                        } else if (url === '/index.html') {
+                            await cache.put('/', clean.clone());
+                        }
                     } else {
                         console.warn('sw: fetch not ok for', url, response && response.status);
                     }
@@ -89,11 +119,18 @@ self.addEventListener('install', event => {
 
 self.addEventListener('activate', event => {
     event.waitUntil(
-        caches.keys().then(keys => Promise.all(
-            keys.map(key => {
-                if (key !== CACHE_NAME) return caches.delete(key);
+        caches.open(CACHE_NAME)
+            .then(cache => cache.match('/index.html'))
+            .then(hasIndex => {
+                if (!hasIndex) return undefined;
+
+                return caches.keys().then(keys => Promise.all(
+                    keys.map(key => {
+                        if (key !== CACHE_NAME) return caches.delete(key);
+                    })
+                ));
             })
-        )).then(() => self.clients.claim())
+            .then(() => self.clients.claim())
     );
 });
 
@@ -108,12 +145,15 @@ self.addEventListener('fetch', event => {
                 cache: 'no-store',
                 credentials: 'same-origin',
                 redirect: 'follow',
-            }).then(networkRes => {
+            }).then(async networkRes => {
                 if (!networkRes || !networkRes.ok) return networkRes;
 
-                const clean = cleanResponse(networkRes);
+                const clean = await cleanResponse(networkRes);
                 caches.open(CACHE_NAME).then(cache => {
                     cache.put(requestUrl.pathname, clean.clone());
+                    if (requestUrl.pathname === '/') {
+                        cache.put('/index.html', clean.clone());
+                    }
                 });
                 return clean;
             }).catch(() => cacheFallback(event.request))
@@ -125,13 +165,13 @@ self.addEventListener('fetch', event => {
         caches.match(event.request).then(cached => {
             if (cached) return cached;
 
-            return fetch(event.request).then(networkRes => {
+            return fetch(event.request).then(async networkRes => {
                 if (!networkRes || networkRes.status !== 200) return networkRes;
 
-                const clean = cleanResponse(networkRes);
+                const clean = await cleanResponse(networkRes);
                 caches.open(CACHE_NAME).then(cache => cache.put(event.request, clean.clone()));
                 return clean;
-            }).catch(() => caches.match(event.request))
+            }).catch(() => caches.match(event.request).then(cached => cached || assetFallback(event.request)))
         })
     );
 });
