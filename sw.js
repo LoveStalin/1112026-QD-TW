@@ -1,4 +1,4 @@
-const CACHE_NAME = 'site-cache-v1';
+const CACHE_NAME = 'site-cache-v3';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -25,7 +25,7 @@ self.addEventListener('install', event => {
             for (const url of urlsToCache) {
                 try {
                     const response = await fetch(url, { cache: 'no-store' });
-                    if (response && response.ok) {
+                    if (response && response.ok && !response.redirected) {
                         await cache.put(url, response.clone());
                     } else {
                         console.warn('sw: fetch not ok for', url, response && response.status);
@@ -53,11 +53,22 @@ self.addEventListener('fetch', event => {
     const requestUrl = new URL(event.request.url);
     if (requestUrl.origin !== location.origin) return;
 
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            fetch(requestUrl.href, {
+                cache: 'no-store',
+                credentials: 'same-origin',
+                redirect: 'follow',
+            }).catch(() => caches.match(event.request).then(cached => cached || caches.match('/index.html')))
+        );
+        return;
+    }
+
     event.respondWith(
         caches.match(event.request).then(cached => {
             if (cached) return cached;
             return fetch(event.request).then(networkRes => {
-                if (!networkRes || networkRes.status !== 200) return networkRes;
+                if (!networkRes || networkRes.status !== 200 || networkRes.redirected) return networkRes;
                 const copy = networkRes.clone();
                 caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
                 return networkRes;

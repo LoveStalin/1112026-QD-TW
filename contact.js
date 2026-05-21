@@ -48,7 +48,7 @@ langBtn.addEventListener("click", () => {
 // load trang giữ nguyên ngôn ngữ cũ
 setLanguage(currentLang);
 //Offline web
-if ("serviceWorker" in Navigator) {
+if ("serviceWorker" in navigator) {
   window.addEventListener("load" ,() => {
     navigator.serviceWorker.register("./sw.js")
 .then(() => console.log("ĐỊT MẸ SW RA RỒI~~~~"))

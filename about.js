@@ -155,7 +155,7 @@ link.addEventListener("click", (e) => {
   alert("This section is encrypted. Please enter the password to access.");
 });
 //Offline Web
-if ("serviceWorker" in Navigator) {
+if ("serviceWorker" in navigator) {
   window.addEventListener("load" ,() => {
     navigator.serviceWorker.register("./sw.js")
 .then(() => console.log("ĐỊT MẸ SW RA RỒI~~~~"))

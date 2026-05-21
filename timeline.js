@@ -170,7 +170,7 @@ passwordInput.addEventListener("keypress", function (e) {
     unlockBtn.click();
   }
 });
-if ("serviceWorker" in Navigator) {
+if ("serviceWorker" in navigator) {
   window.addEventListener("load" ,() => {
     navigator.serviceWorker.register("./sw.js")
 .then(() => console.log("ĐỊT MẸ SW RA RỒI~~~~"))
