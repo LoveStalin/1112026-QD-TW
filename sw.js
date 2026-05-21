@@ -1,4 +1,4 @@
-const CACHE_NAME="portfolio"
+const CACHE_NAME="portfolio-v1"
 //CACHE
 const FILE_TO_CACHE= [
     "./",
@@ -17,6 +17,7 @@ const FILE_TO_CACHE= [
     "./project.html",
     "./project.css",
     "./project.js",
+    console.log("DONE"),
 ];
 //install caches
 self.addEventListener("install",(event) => { 
