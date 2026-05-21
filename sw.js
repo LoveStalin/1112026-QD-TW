@@ -1,6 +1,6 @@
 const CACHE_NAME="portfolio"
 //CACHE
-const FILES_TO_CACHE= [
+const FILE_TO_CACHE= [
     "/",
     "/index.html",
     "/style.css",
@@ -18,13 +18,15 @@ const FILES_TO_CACHE= [
     "/project.css",
     "/project.js",
 ];
+//install cache
 self.addEventListener("install",(event) => { 
     event.waitUntil(
 caches.open(CACHE_NAME)
 .then(cache=>
-    cache.addAll(FILES_TO_CACHE))
+    cache.addAll(FILE_TO_CACHE))
     );
 });
+//fetch cache
 self.addEventListener("fetch",(event) => { 
     event.respondWith(
         catches.match(event.request)

@@ -154,3 +154,11 @@ link.addEventListener("click", (e) => {
   e.preventDefault();
   alert("This section is encrypted. Please enter the password to access.");
 });
+//Offline Web
+if ("serviceWorker" in Navigator) {
+  window.addEventListener("load" ,() => {
+    navigator.serviceWorker.register("/sw.js")
+.then(() => console.log("ĐỊT MẸ SW RA RỒI~~~~"))
+.catch(err=>console.log("NGU LỒN RỒI EM",err));
+  });
+}

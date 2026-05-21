@@ -81,3 +81,10 @@ const observer = new IntersectionObserver(entries => {
 });
 
 items.forEach(item => observer.observe(item));
+if ("serviceWorker" in Navigator) {
+  window.addEventListener("load" ,() => {
+    navigator.serviceWorker.register("/sw.js")
+.then(() => console.log("ĐỊT MẸ SW RA RỒI~~~~"))
+.catch(err=>console.log("NGU LỒN RỒI EM",err));
+  });
+}

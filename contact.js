@@ -47,3 +47,11 @@ langBtn.addEventListener("click", () => {
 
 // load trang giữ nguyên ngôn ngữ cũ
 setLanguage(currentLang);
+//Offline web
+if ("serviceWorker" in Navigator) {
+  window.addEventListener("load" ,() => {
+    navigator.serviceWorker.register("/sw.js")
+.then(() => console.log("ĐỊT MẸ SW RA RỒI~~~~"))
+.catch(err=>console.log("NGU LỒN RỒI EM",err));
+  });
+}
