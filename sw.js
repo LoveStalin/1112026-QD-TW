@@ -1,9 +1,10 @@
-const CACHE_NAME = 'site-cache-v7';
+const CACHE_NAME = 'site-cache-v11';
 const urlsToCache = [
     '/',
     '/index.html',
     '/style.css',
     '/script.js',
+    '/offline-banner.js',
     '/about.html',
     '/about.css',
     '/about.js',
@@ -86,6 +87,17 @@ function assetFallback(request) {
     return new Response('', { status: 503 });
 }
 
+function notifyClientsOffline() {
+    self.clients.matchAll({
+        includeUncontrolled: true,
+        type: 'window',
+    }).then(clients => {
+        clients.forEach(client => {
+            client.postMessage({ type: 'OFFLINE_CACHE_USED' });
+        });
+    });
+}
+
 self.addEventListener('install', event => {
     self.skipWaiting();
     event.waitUntil(
@@ -139,6 +151,22 @@ self.addEventListener('fetch', event => {
     const requestUrl = new URL(event.request.url);
     if (requestUrl.origin !== location.origin) return;
 
+    if (requestUrl.searchParams.has('offline-check')) {
+        event.respondWith(
+            fetch(event.request, {
+                cache: 'no-store',
+                redirect: 'follow',
+            }).catch(() => {
+                notifyClientsOffline();
+                return new Response('offline', {
+                    status: 503,
+                    headers: { 'content-type': 'text/plain; charset=utf-8' },
+                });
+            })
+        );
+        return;
+    }
+
     if (event.request.mode === 'navigate') {
         event.respondWith(
             fetch(requestUrl.href, {
@@ -156,7 +184,10 @@ self.addEventListener('fetch', event => {
                     }
                 });
                 return clean;
-            }).catch(() => cacheFallback(event.request))
+            }).catch(() => {
+                notifyClientsOffline();
+                return cacheFallback(event.request);
+            })
         );
         return;
     }
@@ -171,7 +202,10 @@ self.addEventListener('fetch', event => {
                 const clean = await cleanResponse(networkRes);
                 caches.open(CACHE_NAME).then(cache => cache.put(event.request, clean.clone()));
                 return clean;
-            }).catch(() => caches.match(event.request).then(cached => cached || assetFallback(event.request)))
+            }).catch(() => {
+                notifyClientsOffline();
+                return caches.match(event.request).then(cached => cached || assetFallback(event.request));
+            })
         })
     );
 });
