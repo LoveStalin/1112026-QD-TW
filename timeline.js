@@ -177,3 +177,71 @@ if ("serviceWorker" in navigator) {
 .catch(err=>console.log("NGU LỒN RỒI EM",err));
   });
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const loader = document.getElementById("basketballLoader");
+  const ball = document.getElementById("basketball");
+  const scoreText = document.getElementById("scoreText");
+
+  if (!loader || !ball || !scoreText) return;
+
+  let isTransitioning = false;
+  let scoreTimer;
+  let navigationTimer;
+
+  function resetLoader() {
+    isTransitioning = false;
+    clearTimeout(scoreTimer);
+    clearTimeout(navigationTimer);
+    loader.classList.remove("active");
+    loader.hidden = true;
+    scoreText.classList.remove("show");
+    ball.classList.remove("animate");
+  }
+
+  window.addEventListener("pageshow", resetLoader);
+
+  document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
+      const href = this.getAttribute("href");
+      const target = this.getAttribute("target");
+
+      if (
+        e.defaultPrevented ||
+        e.button !== 0 ||
+        e.metaKey ||
+        e.ctrlKey ||
+        e.shiftKey ||
+        e.altKey ||
+        !href ||
+        href.startsWith("#") ||
+        href.startsWith("http") ||
+        href.startsWith("mailto:") ||
+        href.startsWith("tel:") ||
+        target === "_blank" ||
+        this.hasAttribute("download") ||
+        isTransitioning
+      ) {
+        return;
+      }
+
+      e.preventDefault();
+      isTransitioning = true;
+
+      loader.hidden = false;
+      loader.classList.add("active");
+      scoreText.classList.remove("show");
+      ball.classList.remove("animate");
+
+      void ball.offsetWidth;
+      ball.classList.add("animate");
+
+      scoreTimer = setTimeout(() => {
+        scoreText.classList.add("show");
+      }, 950);
+
+      navigationTimer = setTimeout(() => {
+        window.location.assign(href);
+      }, 1600);
+    });
+  });
+});

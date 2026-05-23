@@ -292,3 +292,156 @@ body {
 .hidden {
   display: none;
 }
+
+[hidden] {
+  display: none !important;
+}
+/* ===== Loader ===== */
+
+.basketball-loader{
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.88);
+
+    backdrop-filter: blur(6px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    z-index: 999999;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: 0.3s;
+}
+
+.basketball-loader.active{
+
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ===== Scene ===== */
+
+.basketball-scene{
+
+    position: relative;
+
+    width: min(500px, calc(100vw - 40px));
+    height: clamp(210px, 52vw, 260px);
+
+    --ball-size: clamp(54px, 14vw, 70px);
+    --hoop-width: clamp(105px, 28vw, 140px);
+}
+
+/* ===== Ball ===== */
+
+.basketball{
+
+    position: absolute;
+
+    width: var(--ball-size);
+    height: var(--ball-size);
+
+    left: 20px;
+    bottom: 0;
+
+    filter:
+    drop-shadow(0 0 12px rgba(255,140,0,0.5));
+}
+
+.basketball svg{
+
+    width: 100%;
+    height: 100%;
+}
+
+/* ===== Hoop ===== */
+
+.hoop{
+
+    position: absolute;
+
+    right: 20px;
+    top: 30px;
+
+    width: var(--hoop-width);
+
+    filter:
+    drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.hoop svg{
+
+    width: 100%;
+}
+
+/* ===== Ball Animation ===== */
+
+.basketball.animate{
+
+    animation:
+    shootBall 1.2s ease-in-out forwards;
+}
+
+@keyframes shootBall{
+
+    0%{
+        left: 20px;
+        bottom: 0;
+
+        transform:
+        rotate(0deg)
+        scale(1);
+    }
+
+    50%{
+        bottom: 69%;
+
+        transform:
+        rotate(360deg)
+        scale(1.05);
+    }
+
+    100%{
+        left: calc(100% - var(--hoop-width) + 25px);
+        bottom: 31%;
+
+        transform:
+        rotate(720deg)
+        scale(0.9);
+    }
+
+}
+
+/* ===== Score Text ===== */
+
+.score-text{
+
+    margin-top: 20px;
+
+    color: #8bff75;
+
+    font-size: 34px;
+    font-weight: bold;
+
+    opacity: 0;
+
+    transform:
+    scale(0.8);
+
+    transition: 0.3s;
+}
+
+.score-text.show{
+
+    opacity: 1;
+
+    transform:
+    scale(1);
+}
