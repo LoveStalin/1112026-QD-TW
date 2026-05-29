@@ -235,13 +235,16 @@ body {
 
 .basketball-scene{
 
-    position: relative;
+    position: absolute;
+    inset: 0;
 
-    width: min(500px, calc(100vw - 40px));
-    height: clamp(210px, 52vw, 260px);
+    width: 100vw;
+    height: 100vh;
 
     --ball-size: clamp(54px, 14vw, 70px);
     --hoop-width: clamp(105px, 28vw, 140px);
+    --edge-gap: clamp(14px, 3vw, 32px);
+    --floor-gap: clamp(16px, 4vw, 34px);
 }
 
 /* ===== Ball ===== */
@@ -253,11 +256,15 @@ body {
     width: var(--ball-size);
     height: var(--ball-size);
 
-    left: 20px;
-    bottom: 0;
+    left: var(--edge-gap);
+    bottom: var(--floor-gap);
 
     filter:
     drop-shadow(0 0 12px rgba(255,140,0,0.5));
+
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
 }
 
 .basketball svg{
@@ -272,8 +279,8 @@ body {
 
     position: absolute;
 
-    right: 20px;
-    top: 30px;
+    right: var(--edge-gap);
+    bottom: var(--floor-gap);
 
     width: var(--hoop-width);
 
@@ -291,31 +298,41 @@ body {
 .basketball.animate{
 
     animation:
-    shootBall 1.2s ease-in-out forwards;
+    shootBall 2.4s cubic-bezier(0.2, 0.72, 0.18, 1) forwards;
 }
 
 @keyframes shootBall{
 
     0%{
-        left: 20px;
-        bottom: 0;
+        left: var(--edge-gap);
+        bottom: var(--floor-gap);
 
         transform:
         rotate(0deg)
         scale(1);
     }
 
-    50%{
-        bottom: 69%;
+    38%{
+        left: 36%;
+        bottom: 64%;
 
         transform:
         rotate(360deg)
         scale(1.05);
     }
 
+    70%{
+        left: calc(100% - var(--edge-gap) - var(--hoop-width) - 120px);
+        bottom: 46%;
+
+        transform:
+        rotate(640deg)
+        scale(0.96);
+    }
+
     100%{
-        left: calc(100% - var(--hoop-width) + 25px);
-        bottom: 31%;
+        left: calc(100% - var(--edge-gap) - var(--hoop-width) + 35px);
+        bottom: clamp(72px, 10vw, 88px);
 
         transform:
         rotate(720deg)
@@ -328,7 +345,10 @@ body {
 
 .score-text{
 
-    margin-top: 20px;
+    position: absolute;
+    left: 50%;
+    bottom: clamp(72px, 12vh, 120px);
+    margin-top: 0;
 
     color: #8bff75;
 
@@ -338,6 +358,7 @@ body {
     opacity: 0;
 
     transform:
+    translateX(-50%)
     scale(0.8);
 
     transition: 0.3s;
@@ -348,6 +369,7 @@ body {
     opacity: 1;
 
     transform:
+    translateX(-50%)
     scale(1);
 }
 
