@@ -1,9 +1,17 @@
 let typingElements = [];
 let typingIndex = 0;
+let typingInterval;
+let typingTimeout;
+let typingRunId = 0;
 const typingSpeed = 20;
 const delayBetween = 700;
 
 function startTyping() {
+  typingRunId++;
+  clearInterval(typingInterval);
+  clearTimeout(typingTimeout);
+
+  const runId = typingRunId;
   typingElements = document.querySelectorAll(".typing");
   typingIndex = 0;
 
@@ -12,24 +20,30 @@ function startTyping() {
     el.innerHTML = "";
   });
 
-  typeNext();
+  typeNext(runId);
 }
 
-function typeNext() {
+function typeNext(runId) {
+  if (runId !== typingRunId) return;
   if (typingIndex >= typingElements.length) return;
 
   const el = typingElements[typingIndex];
   const text = el.dataset.text;
   let charIndex = 0;
 
-  const interval = setInterval(() => {
+  typingInterval = setInterval(() => {
+    if (runId !== typingRunId) {
+      clearInterval(typingInterval);
+      return;
+    }
+
     el.innerHTML = text.slice(0, charIndex + 1);
     charIndex++;
 
     if (charIndex === text.length) {
-      clearInterval(interval);
+      clearInterval(typingInterval);
       typingIndex++;
-      setTimeout(typeNext, delayBetween);
+      typingTimeout = setTimeout(() => typeNext(runId), delayBetween);
     }
   }, typingSpeed);
 }
@@ -41,10 +55,10 @@ const translations = {
     nav_projects: "Projects",
     nav_contact: "Contact",
     about_title: "About Me",
-    about_name: "My full name is <span class=\"text-green\">Nguyen Xuan Thanh</span> – but you can call me <span class=\"text-green\">XuanThanhSigma</span>.",
-    about_hobbies: "I love something about <span class=\"text-green\">Military, Politics , </span> <span class=\"text-blue\">Aviation and </span> <span class=\"text-orange\">Basketball</span>. I'm also passionate about <span class=\"text-grey\">web development and technology.</span>",
-    about_dreams: " Nowadays, I want to become a <span class=\"text-green\">Soldier</span> or <span class=\"text-blue\">Pilot.</span>",
-    about_future: " You know, I'm still a student. So I can't decide my future yet. But one thing for sure is that I will try my best to achieve my dreams.",
+    about_name: "My full name is <span class=\"text-green\">Nguyen Xuan Thanh</span> – but you can call me <span class=\"text-green\">ThanhDeveloper</span>.",
+    about_hobbies: "I love something about <span class=\"text-green\">Military </span> , <span class=\"text-yellow\">Politics</span> ,<span class=\"text-blue\">Aviation </span> and <span class=\"text-orange\">Basketball</span>. I'm also passionate about <span class=\"text-grey\">web development and technology.</span>",
+    about_dreams: "Nowadays, I want to become a <span class=\"text-green\">Soldier</span> or <span class=\"text-blue\">Pilot.</span>",
+    about_future: "You know, I'm still a student. So I can't decide my future yet. But one thing for sure is that I will try my best to achieve my dreams.",
     about_webdev: "Here’s a little more about what I’ve done in web development so far:",
     about_journey_1: " <span class=\"text-green\">June of 2025:</span> Started learning Front-end (HTML, CSS, JS)",
     about_journey_2: "<span class=\"text-green\">2025–2026:</span> Built full portfolio & projects",
@@ -57,12 +71,12 @@ const translations = {
     nav_projects: "Các dự án",
     nav_contact: "Liên hệ",
     about_title: "Thông tin chung về mình",
-    about_name: "Tên đầy đủ của mình là <span class=\"text-green\">Nguyễn Xuân Thành</span> – nhưng bạn có thể gọi mình là <span class=\"text-green\">XuanThanhSigma</span>.",
-    about_hobbies: " Mình thích những thứ về <span class=\"text-green\">Quân đội, Chính trị , </span> <span class=\"text-blue\">Máy bay và </span> <span class=\"text-orange\">Bóng rổ</span>. Mình cũng đam mê về <span class=\"text-grey\">phát triển web và công nghệ.</span>",
+    about_name: "Tên đầy đủ của mình là <span class=\"text-green\">Nguyễn Xuân Thành</span> – nhưng bạn có thể gọi mình là <span class=\"text-green\">ThanhDeveloper</span>.",
+    about_hobbies: " Mình thích những thứ về <span class=\"text-green\">Quân đội </span> , <span class=\"text-yellow\">Chính trị</span> , <span class=\"text-blue\">Máy bay</span> và <span class=\"text-orange\">Bóng rổ</span>. Mình cũng đam mê về <span class=\"text-grey\">phát triển web và công nghệ.</span>",
     about_dreams: " Hiện nay, mình muốn trở thành <span class=\"text-green\">Bộ đội</span> hoặc <span class=\"text-blue\">Phi công.</span>",
     about_future: "Bạn biết đấy, mình vẫn còn là học sinh. Vì vậy mình chưa thể quyết định tương lai của mình. Nhưng một điều chắc chắn là mình sẽ cố gắng hết sức để đạt được ước mơ của mình.",
     about_webdev: "Dưới đây là một chút về những gì mình đã làm trong lĩnh vực phát triển web cho đến nay:",
-    about_journey_1: "<span class=\"text-green\">Tháng 7 năm 2025:</span> Bắt đầu học Front-end (HTML, CSS, JS)",
+    about_journey_1: "<span class=\"text-green\">Tháng 6 năm 2025:</span> Bắt đầu học Front-end (HTML, CSS, JS)",
     about_journey_2: "<span class=\"text-green\">2025–2026:</span> Xây dựng portfolio & các dự án hoàn chỉnh",
     about_journey_3: "<span class=\"text-green\">Hiện tại:</span> Tiếp tục cải thiện kỹ năng của bản thân trong phát triển web và đang cân nhắc học ngành Khoa học Dữ liệu và Bảo vệ Mạng",
     about_timeline: "Bạn muốn xem thông tin chi tiết hơn về mình?Xem thêm ở đây 😉"

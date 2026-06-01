@@ -1,4 +1,4 @@
-const CACHE_NAME = 'site-cache-v15';
+const CACHE_NAME = 'site-cache-v21';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -62,18 +62,18 @@ async function cleanResponse(response) {
     });
 }
 
-function cacheFallback(request) {
+async function cacheFallback(request) {
     const requestUrl = new URL(request.url);
     const path = requestUrl.pathname === '/' ? '/index.html' : requestUrl.pathname;
 
-    return caches.match(request)
-        .then(cached => cached || caches.match(path))
-        .then(cached => cached || caches.match('/'))
-        .then(cached => cached || caches.match('/index.html'))
-        .then(cached => cached || new Response('Offline page is not cached yet.', {
-            status: 503,
-            headers: { 'content-type': 'text/plain; charset=utf-8' },
-        }));
+    const cached = await caches.match(request);
+    const cached_1 = cached || caches.match(path);
+    const cached_2 = cached_1 || caches.match('/');
+    const cached_3 = cached_2 || caches.match('/index.html');
+    return cached_3 || new Response('Offline page is not cached yet.', {
+        status: 503,
+        headers: { 'content-type': 'text/plain; charset=utf-8' },
+    });
 }
 
 function assetFallback(request) {
