@@ -77,6 +77,8 @@ body {
   top: 30px;
   right: 30px;
   z-index: 1001;
+  padding: 2px 0;
+  transition: transform 0.25s ease;
 }
 
 .menu-icon span {
@@ -85,6 +87,35 @@ body {
   background: white;
   margin: 6px 0;
   transition: 0.3s;
+  transform-origin: center;
+}
+
+.menu-icon:hover {
+  transform: scale(1.08);
+}
+
+.menu-icon:focus-visible {
+  outline: 2px solid #5cff9a;
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+
+.menu-icon.active span {
+  background: #5cff9a;
+  box-shadow: 0 0 16px rgba(92, 255, 154, 0.8);
+}
+
+.menu-icon.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-icon.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(12px) scaleX(0);
+}
+
+.menu-icon.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 /* side menu */
@@ -216,6 +247,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    overflow: hidden;
+    isolation: isolate;
 
     z-index: 999999;
 
@@ -239,12 +272,12 @@ body {
     inset: 0;
 
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
 
-    --ball-size: clamp(54px, 14vw, 70px);
-    --hoop-width: clamp(105px, 28vw, 140px);
-    --edge-gap: clamp(14px, 3vw, 32px);
-    --floor-gap: clamp(16px, 4vw, 34px);
+    --ball-size: 70px;
+    --hoop-width: 140px;
+    --edge-gap: 32px;
+    --floor-gap: 34px;
 }
 
 /* ===== Ball ===== */
@@ -262,9 +295,10 @@ body {
     filter:
     drop-shadow(0 0 12px rgba(255,140,0,0.5));
 
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  z-index: 2;
 }
 
 .basketball svg{
@@ -282,10 +316,11 @@ body {
     right: var(--edge-gap);
     bottom: var(--floor-gap);
 
-    width: var(--hoop-width);
+  width: var(--hoop-width);
 
-    filter:
+  filter:
     drop-shadow(0 0 10px rgba(255,255,255,0.2));
+  z-index: 3;
 }
 
 .hoop svg{
@@ -371,6 +406,34 @@ body {
     transform:
     translateX(-50%)
     scale(1);
+}
+
+@media (max-width: 600px) {
+  .basketball-scene {
+    --ball-size: 70px;
+    --hoop-width: 140px;
+    --edge-gap: 28px;
+    --floor-gap: max(34px, calc(env(safe-area-inset-bottom) + 28px));
+  }
+
+  .score-text {
+    bottom: max(96px, calc(env(safe-area-inset-bottom) + 86px));
+    font-size: 24px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .basketball-scene {
+    --ball-size: 42px;
+    --hoop-width: 84px;
+    --floor-gap: 18px;
+  }
+
+  .score-text {
+    bottom: 90px;
+    font-size: 20px;
+  }
 }
 
 /* ===== FOOTER ===== */

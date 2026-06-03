@@ -22,8 +22,22 @@ passwordInput.addEventListener("keypress", function (e) {
 });
 // Menu Toggle
 function toggleMenu() {
-  document.getElementById("sideMenu").classList.toggle("active");
+  const sideMenu = document.getElementById("sideMenu");
+  const menuIcon = document.querySelector(".menu-icon");
+  const isOpen = sideMenu.classList.toggle("active");
+
+  if (menuIcon) {
+    menuIcon.classList.toggle("active", isOpen);
+    menuIcon.setAttribute("aria-expanded", String(isOpen));
+  }
 }
+
+document.querySelector(".menu-icon")?.addEventListener("keydown", event => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    toggleMenu();
+  }
+});
 //Translation
 // Language Translations
 const translations = {
@@ -132,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const t = i / frameCount;
       const curveX = 2 * (1 - t) * t * controlX + t * t * endX;
       const curveY = 2 * (1 - t) * t * controlY + t * t * endY;
-      const scale = 1 + Math.sin(Math.PI * t) * 0.06 - t * 0.08;
+      const scale = 1 + Math.sin(Math.PI * t) * 0.06 - t * 0.22;
 
       frames.push({
         transform: `translate3d(${curveX}px, ${curveY}px, 0) rotate(${780 * t}deg) scale(${scale})`

@@ -151,8 +151,99 @@ if (langBtn) {
 setLanguage(currentLang);
 // Menu Toggle
 function toggleMenu() {
-  document.getElementById("sideMenu").classList.toggle("active");
+  const sideMenu = document.getElementById("sideMenu");
+  const menuIcon = document.querySelector(".menu-icon");
+  const isOpen = sideMenu.classList.toggle("active");
+
+  if (menuIcon) {
+    menuIcon.classList.toggle("active", isOpen);
+    menuIcon.setAttribute("aria-expanded", String(isOpen));
+  }
 }
+
+document.querySelector(".menu-icon")?.addEventListener("keydown", event => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    toggleMenu();
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hero = document.querySelector(".hero");
+  const imageCard = document.querySelector(".image-card");
+
+  document.querySelectorAll(".visitor-section, .visitor-title, .visitor-input-box, .visitor-list").forEach(el => {
+    el.classList.add("reveal");
+  });
+
+  const revealObserver = "IntersectionObserver" in window
+    ? new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.16 })
+    : null;
+
+  document.querySelectorAll(".reveal").forEach(el => {
+    if (revealObserver) {
+      revealObserver.observe(el);
+    } else {
+      el.classList.add("is-visible");
+    }
+  });
+
+  if (reduceMotion) return;
+
+  window.addEventListener("pointermove", event => {
+    document.body.style.setProperty("--cursor-x", `${event.clientX}px`);
+    document.body.style.setProperty("--cursor-y", `${event.clientY}px`);
+  }, { passive: true });
+
+  if (hero) {
+    const sparkLayer = document.createElement("div");
+    sparkLayer.className = "spark-layer";
+
+    for (let i = 0; i < 28; i++) {
+      const spark = document.createElement("span");
+      spark.className = "spark";
+      spark.style.setProperty("--spark-x", `${Math.random() * 100}%`);
+      spark.style.setProperty("--spark-y", `${40 + Math.random() * 70}%`);
+      spark.style.setProperty("--spark-size", `${2 + Math.random() * 4}px`);
+      spark.style.setProperty("--spark-speed", `${7 + Math.random() * 8}s`);
+      spark.style.setProperty("--spark-delay", `${Math.random() * -10}s`);
+      spark.style.setProperty("--spark-drift", `${-40 + Math.random() * 80}px`);
+      sparkLayer.appendChild(spark);
+    }
+
+    document.body.prepend(sparkLayer);
+  }
+
+  if (imageCard) {
+    imageCard.addEventListener("pointermove", event => {
+      const rect = imageCard.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      const tiltY = (x - 0.5) * 10;
+      const tiltX = (0.5 - y) * 10;
+
+      imageCard.style.setProperty("--tilt-x", `${tiltX.toFixed(2)}deg`);
+      imageCard.style.setProperty("--tilt-y", `${tiltY.toFixed(2)}deg`);
+      imageCard.style.setProperty("--shine-x", `${(x * 100).toFixed(1)}%`);
+      imageCard.style.setProperty("--shine-y", `${(y * 100).toFixed(1)}%`);
+    }, { passive: true });
+
+    imageCard.addEventListener("pointerleave", () => {
+      imageCard.style.setProperty("--tilt-x", "0deg");
+      imageCard.style.setProperty("--tilt-y", "0deg");
+      imageCard.style.setProperty("--shine-x", "50%");
+      imageCard.style.setProperty("--shine-y", "50%");
+    });
+  }
+});
 // Photo Wall
 document.addEventListener('DOMContentLoaded', () => {
   const moreBtn = document.querySelector('.more-btn');
@@ -286,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const t = i / frameCount;
       const curveX = 2 * (1 - t) * t * controlX + t * t * endX;
       const curveY = 2 * (1 - t) * t * controlY + t * t * endY;
-      const scale = 1 + Math.sin(Math.PI * t) * 0.06 - t * 0.08;
+      const scale = 1 + Math.sin(Math.PI * t) * 0.06 - t * 0.22;
 
       frames.push({
         transform: `translate3d(${curveX}px, ${curveY}px, 0) rotate(${780 * t}deg) scale(${scale})`

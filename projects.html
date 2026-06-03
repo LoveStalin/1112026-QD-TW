@@ -13,7 +13,7 @@
   <header class="navbar">
     <div class="logo">ThanhDeveloper</div>
     <div class="nav">
-      <div class="menu-icon" onclick="toggleMenu()">
+      <div class="menu-icon" onclick="toggleMenu()" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0">
         <span></span>
         <span></span>
         <span></span>
@@ -95,107 +95,64 @@
     </div>
 
     </div>
-    
+
     <div class="basketball-loader" id="basketballLoader" hidden>
 
-    <div class="basketball-scene">
+      <div class="basketball-scene">
 
         <!-- BALL -->
         <div class="basketball" id="basketball">
 
-            <svg viewBox="0 0 100 100">
+          <svg viewBox="0 0 100 100">
 
-                <circle
-                    cx="50"
-                    cy="50"
-                    r="45"
-                    fill="#ff7a00"
-                    stroke="#111"
-                    stroke-width="4"
-                />
+            <circle cx="50" cy="50" r="45" fill="#ff7a00" stroke="#111" stroke-width="4" />
 
-                <path
-                    d="M50 5 A45 45 0 0 1 50 95"
-                    stroke="#111"
-                    stroke-width="4"
-                    fill="none"
-                />
+            <path d="M50 5 A45 45 0 0 1 50 95" stroke="#111" stroke-width="4" fill="none" />
 
-                <path
-                    d="M5 50 A45 45 0 0 0 95 50"
-                    stroke="#111"
-                    stroke-width="4"
-                    fill="none"
-                />
+            <path d="M5 50 A45 45 0 0 0 95 50" stroke="#111" stroke-width="4" fill="none" />
 
-                <path
-                    d="M25 10 C40 50 40 50 25 90"
-                    stroke="#111"
-                    stroke-width="4"
-                    fill="none"
-                />
+            <path d="M25 10 C40 50 40 50 25 90" stroke="#111" stroke-width="4" fill="none" />
 
-                <path
-                    d="M75 10 C60 50 60 50 75 90"
-                    stroke="#111"
-                    stroke-width="4"
-                    fill="none"
-                />
+            <path d="M75 10 C60 50 60 50 75 90" stroke="#111" stroke-width="4" fill="none" />
 
-            </svg>
+          </svg>
 
         </div>
 
         <!-- HOOP -->
         <div class="hoop">
 
-            <svg viewBox="0 0 200 200">
+          <svg viewBox="0 0 200 200">
 
-                <!-- Rim -->
-                <ellipse
-                    cx="100"
-                    cy="70"
-                    rx="45"
-                    ry="10"
-                    fill="none"
-                    stroke="#ff3b30"
-                    stroke-width="8"
-                />
+            <!-- Rim -->
+            <ellipse cx="100" cy="70" rx="45" ry="10" fill="none" stroke="#ff3b30" stroke-width="8" />
 
-                <!-- Net -->
-                <path
-                    d="
+            <!-- Net -->
+            <path d="
                     M60 70 L75 130
                     M80 70 L90 140
                     M100 70 L100 145
                     M120 70 L110 140
                     M140 70 L125 130
-                    "
-                    stroke="white"
-                    stroke-width="3"
-                />
+                    " stroke="white" stroke-width="3" />
 
-                <path
-                    d="
+            <path d="
                     M70 100 L130 100
                     M75 120 L125 120
-                    "
-                    stroke="white"
-                    stroke-width="3"
-                />
+                    " stroke="white" stroke-width="3" />
 
-            </svg>
+          </svg>
 
         </div>
 
-    </div>
+      </div>
 
-    <div class="score-text" id="scoreText">
+      <div class="score-text" id="scoreText">
         3PTS MADE!!!! 🔥
-    </div>
+      </div>
 
-</div>
-<div class="lock-overlay" id="projectLock">
+    </div>
+    <div class="lock-overlay" id="projectLock">
       <div class="lock-box">
         <h2>Private Site 🔒</h2>
         <p>This Site is protected</p>
