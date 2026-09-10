@@ -265,19 +265,29 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 const visitorList = document.getElementById("visitorList");
+const VISITOR_LIMIT = 15;
+const visitorConfig = window.VISITOR_CONFIG || {};
+const hasSharedVisitorStore = Boolean(
+  visitorConfig.supabaseUrl && visitorConfig.supabaseAnonKey
+);
 
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", loadVisitors);
 
-  const savedVisitors =
-    JSON.parse(localStorage.getItem("visitors")) || [];
+async function loadVisitors() {
+  if (hasSharedVisitorStore) {
+    try {
+      const response = await fetchVisitors();
+      renderVisitors(response);
+      return;
+    } catch (error) {
+      console.error("Could not load shared visitors:", error);
+    }
+  }
 
-  savedVisitors.forEach(visitor => {
-    createVisitor(visitor.name, visitor.time);
-  });
+  renderVisitors(readLocalVisitors());
+}
 
-};
-
-function addVisitor() {
+async function addVisitor() {
 
   const input = document.getElementById("visitorName");
 
@@ -287,25 +297,99 @@ function addVisitor() {
     return;
   }
 
-  const currentTime =
-    new Date().toLocaleString("vi-VN");
+  const visitor = {
+    name,
+    time: new Date().toLocaleString("vi-VN")
+  };
 
-  createVisitor(name, currentTime);
+  try {
+    if (hasSharedVisitorStore) {
+      await saveSharedVisitor(name);
+    } else {
+      saveLocalVisitor(visitor);
+    }
+    input.value = "";
+    await loadVisitors();
+  } catch (error) {
+    console.error("Could not save visitor:", error);
+  }
+}
 
-  const savedVisitors =
-    JSON.parse(localStorage.getItem("visitors")) || [];
-
-  savedVisitors.unshift({
-    name: name,
-    time: currentTime
+function renderVisitors(visitors) {
+  visitorList.replaceChildren();
+  visitors.slice(0, VISITOR_LIMIT).forEach(visitor => {
+    createVisitor(visitor.name, visitor.time);
   });
+}
 
-  localStorage.setItem(
-    "visitors",
-    JSON.stringify(savedVisitors)
+function readLocalVisitors() {
+  try {
+    return JSON.parse(localStorage.getItem("visitors")) || [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveLocalVisitor(visitor) {
+  const visitors = [visitor, ...readLocalVisitors()].slice(0, VISITOR_LIMIT);
+  localStorage.setItem("visitors", JSON.stringify(visitors));
+}
+
+async function fetchVisitors() {
+  const response = await fetch(
+    `${visitorConfig.supabaseUrl}/rest/v1/visitors?select=id,name,created_at&order=created_at.desc&limit=${VISITOR_LIMIT}`,
+    { headers: getSupabaseHeaders() }
   );
 
-  input.value = "";
+  if (!response.ok) throw new Error(`Visitor fetch failed: ${response.status}`);
+
+  return (await response.json()).map(visitor => ({
+    name: visitor.name,
+    time: new Date(visitor.created_at).toLocaleString("vi-VN")
+  }));
+}
+
+async function saveSharedVisitor(name) {
+  const response = await fetch(`${visitorConfig.supabaseUrl}/rest/v1/visitors`, {
+    method: "POST",
+    headers: {
+      ...getSupabaseHeaders(),
+      "Content-Type": "application/json",
+      Prefer: "return=minimal"
+    },
+    body: JSON.stringify({ name })
+  });
+
+  if (!response.ok) throw new Error(`Visitor save failed: ${response.status}`);
+  await trimSharedVisitors();
+}
+
+async function trimSharedVisitors() {
+  const response = await fetch(
+    `${visitorConfig.supabaseUrl}/rest/v1/visitors?select=id&order=created_at.desc`,
+    { headers: getSupabaseHeaders() }
+  );
+
+  if (!response.ok) throw new Error(`Visitor cleanup failed: ${response.status}`);
+
+  const visitors = await response.json();
+  const oldVisitors = visitors.slice(VISITOR_LIMIT);
+  if (oldVisitors.length === 0) return;
+
+  const ids = oldVisitors.map(visitor => visitor.id).join(",");
+  const deleteResponse = await fetch(
+    `${visitorConfig.supabaseUrl}/rest/v1/visitors?id=in.(${ids})`,
+    { method: "DELETE", headers: getSupabaseHeaders() }
+  );
+
+  if (!deleteResponse.ok) throw new Error(`Visitor cleanup failed: ${deleteResponse.status}`);
+}
+
+function getSupabaseHeaders() {
+  return {
+    apikey: visitorConfig.supabaseAnonKey,
+    Authorization: `Bearer ${visitorConfig.supabaseAnonKey}`
+  };
 }
 
 function createVisitor(name, time) {
@@ -315,11 +399,15 @@ function createVisitor(name, time) {
 
   newVisitor.classList.add("visitor-item");
 
-  newVisitor.innerHTML = `
-        <span class="visitor-name">${name}</span>
-        đã đến đây!
-        <div class="visitor-time">${time}</div>
-    `;
+  const nameElement = document.createElement("span");
+  nameElement.className = "visitor-name";
+  nameElement.textContent = name;
+
+  const timeElement = document.createElement("div");
+  timeElement.className = "visitor-time";
+  timeElement.textContent = time;
+
+  newVisitor.append(nameElement, " đã đến đây!", timeElement);
 
   visitorList.prepend(newVisitor);
 }
