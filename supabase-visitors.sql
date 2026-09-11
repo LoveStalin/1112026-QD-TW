@@ -6,6 +6,10 @@ create table if not exists public.visitors (
 
 alter table public.visitors enable row level security;
 
+drop policy if exists "Anyone can read visitors" on public.visitors;
+drop policy if exists "Anyone can add a visitor" on public.visitors;
+drop policy if exists "Anyone can remove old visitors" on public.visitors;
+
 create policy "Anyone can read visitors"
 on public.visitors for select
 to anon, authenticated

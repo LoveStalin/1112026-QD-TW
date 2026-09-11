@@ -274,17 +274,18 @@ const hasSharedVisitorStore = Boolean(
 document.addEventListener("DOMContentLoaded", loadVisitors);
 
 async function loadVisitors() {
-  if (hasSharedVisitorStore) {
-    try {
-      const response = await fetchVisitors();
-      renderVisitors(response);
-      return;
-    } catch (error) {
-      console.error("Could not load shared visitors:", error);
-    }
+  if (!hasSharedVisitorStore) {
+    showVisitorError("Shared visitor storage is not configured.");
+    return;
   }
 
-  renderVisitors(readLocalVisitors());
+  try {
+    const response = await fetchVisitors();
+    renderVisitors(response);
+  } catch (error) {
+    console.error("Could not load shared visitors:", error);
+    showVisitorError(error.message);
+  }
 }
 
 async function addVisitor() {
@@ -297,21 +298,17 @@ async function addVisitor() {
     return;
   }
 
-  const visitor = {
-    name,
-    time: new Date().toLocaleString("vi-VN")
-  };
-
   try {
-    if (hasSharedVisitorStore) {
-      await saveSharedVisitor(name);
-    } else {
-      saveLocalVisitor(visitor);
+    if (!hasSharedVisitorStore) {
+      throw new Error("Shared visitor storage is not configured.");
     }
+
+    await saveSharedVisitor(name);
     input.value = "";
     await loadVisitors();
   } catch (error) {
     console.error("Could not save visitor:", error);
+    showVisitorError(error.message);
   }
 }
 
@@ -322,17 +319,12 @@ function renderVisitors(visitors) {
   });
 }
 
-function readLocalVisitors() {
-  try {
-    return JSON.parse(localStorage.getItem("visitors")) || [];
-  } catch (error) {
-    return [];
-  }
-}
-
-function saveLocalVisitor(visitor) {
-  const visitors = [visitor, ...readLocalVisitors()].slice(0, VISITOR_LIMIT);
-  localStorage.setItem("visitors", JSON.stringify(visitors));
+function showVisitorError(message) {
+  visitorList.replaceChildren();
+  const errorElement = document.createElement("div");
+  errorElement.className = "visitor-time";
+  errorElement.textContent = message;
+  visitorList.append(errorElement);
 }
 
 async function fetchVisitors() {
