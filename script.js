@@ -341,7 +341,9 @@ async function fetchVisitors() {
     { headers: getSupabaseHeaders() }
   );
 
-  if (!response.ok) throw new Error(`Visitor fetch failed: ${response.status}`);
+  if (!response.ok) {
+    throw new Error(await getVisitorApiError(response, "fetch"));
+  }
 
   return (await response.json()).map(visitor => ({
     name: visitor.name,
@@ -360,7 +362,9 @@ async function saveSharedVisitor(name) {
     body: JSON.stringify({ name })
   });
 
-  if (!response.ok) throw new Error(`Visitor save failed: ${response.status}`);
+  if (!response.ok) {
+    throw new Error(await getVisitorApiError(response, "save"));
+  }
   await trimSharedVisitors();
 }
 
@@ -370,7 +374,9 @@ async function trimSharedVisitors() {
     { headers: getSupabaseHeaders() }
   );
 
-  if (!response.ok) throw new Error(`Visitor cleanup failed: ${response.status}`);
+  if (!response.ok) {
+    throw new Error(await getVisitorApiError(response, "cleanup"));
+  }
 
   const visitors = await response.json();
   const oldVisitors = visitors.slice(VISITOR_LIMIT);
@@ -382,7 +388,21 @@ async function trimSharedVisitors() {
     { method: "DELETE", headers: getSupabaseHeaders() }
   );
 
-  if (!deleteResponse.ok) throw new Error(`Visitor cleanup failed: ${deleteResponse.status}`);
+  if (!deleteResponse.ok) {
+    throw new Error(await getVisitorApiError(deleteResponse, "cleanup"));
+  }
+}
+
+async function getVisitorApiError(response, action) {
+  let details = "";
+  try {
+    const body = await response.json();
+    details = body.message ? `: ${body.message}` : "";
+  } catch (error) {
+    // Keep the HTTP status when the API does not return JSON.
+  }
+
+  return `Visitor ${action} failed (${response.status})${details}`;
 }
 
 function getSupabaseHeaders() {
