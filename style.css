@@ -505,6 +505,8 @@ body::before {
   transform: translate(-50%, -50%) scale(0.95);
   width: 480px;
   max-width: 90%;
+  max-height: 88vh;
+  overflow: hidden;
   background: #0f141a;
   border: 1px solid #1f252d;
   border-radius: 16px;
@@ -556,6 +558,103 @@ body::before {
   margin-top: 20px;
   font-size: 15px;
   color: #b5b5b5;
+  max-height: calc(88vh - 92px);
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.skill-group {
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid rgba(92, 255, 154, 0.18);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(92, 255, 154, 0.08), rgba(255, 255, 255, 0.02));
+}
+
+.skill-group:last-child {
+  margin-bottom: 4px;
+}
+
+.skill-group-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.skill-group-number {
+  color: #0f141a;
+  background: #5cff9a;
+  border-radius: 8px;
+  padding: 5px 7px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.skill-group-heading h4 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.skill-group-heading p {
+  margin: 3px 0 0;
+  color: #7d8b86;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.skill-group-list {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.application-skills {
+  display: flex;
+  flex-direction: column;
+}
+
+.security-group {
+  border-color: rgba(255, 178, 92, 0.3);
+  background: linear-gradient(135deg, rgba(255, 178, 92, 0.1), rgba(255, 255, 255, 0.02));
+}
+
+.security-group .skill-group-number {
+  background: #ffb25c;
+}
+
+.security-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.security-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.security-tools strong {
+  flex-basis: 100%;
+  color: #ffcf91;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.security-tools span {
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 178, 92, 0.3);
+  border-radius: 6px;
+  color: #ffd6a3;
+  font-size: 11px;
+}
+
+@media (max-width: 380px) {
+  .skill-group {
+    padding: 13px;
+  }
 }
 
 .nav {
